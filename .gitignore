@@ -1,4 +1,6 @@
 /vendor
 /node_modules
 /storage/database.sqlite
+/.idea
+.phpstorm.meta.php
 .env
