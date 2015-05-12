@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Pushman
+        psr4_prefix: Pushman
+        src_path: app

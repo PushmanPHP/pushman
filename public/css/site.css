@@ -1,0 +1,11 @@
+body {
+	margin-bottom:20px;
+}
+
+.no-top {
+	margin-top:0;
+}
+
+.hidden { 
+	display:none;
+}
