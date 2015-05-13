@@ -4,11 +4,6 @@
 
 	<h1>Documentation</h1>
 
-	<div class="alert alert-info">
-		<h4>In-progress</h4>
-		<p>Since this beta software, still adding some features so documentation is going to be sketchy.</p>
-	</div>
-
 	<h2>Installation</h2>
 	<p>Pushman works fantastically on Laravel's <a href="http://forge.laravel.com">Forge</a>! <strong>You still need to install prerequisites though.</strong></p>
 
@@ -194,6 +189,14 @@ Content-Type: multipart/form-data;
     "message": "Event has been pushed"
 }
 			</pre>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>PHP Library</h3>
+			<p>If you're building a project in PHP you can use <a href="http://composer.org">Composer</a> to load the Pushman PHP Library into your project to run easy calls!</p>
+			<p><a href="http://github.com/Duffleman/pushman_php">Check it out on GitHub</a>! There is also a readme included to get you started.</p>
 		</div>
 	</div>
 
