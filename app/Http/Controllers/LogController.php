@@ -39,12 +39,13 @@ class LogController extends Controller {
         $private = env('PUSHMAN_PRIVATE');
         $site = Site::wherePrivate($private)->firstOrFail();
 
+        $server = \Request::server('HTTP_HOST');
+        $server = $server;
 
         $port = env('PUSHMAN_PORT', 8080);
-
         $logs = IntLog::orderBy('id', 'DESC')->limit(20)->get();
 
-        return view('logs.all', compact('site', 'logs', 'port'));
+        return view('logs.all', compact('site', 'logs', 'port', 'server'));
     }
 
     private function checkOwnership($log, $user)

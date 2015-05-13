@@ -58,7 +58,7 @@
 	@parent
 	<script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>
 	<script>
-	var conn = new ab.Session('ws://127.0.0.1:{{$port}}?token={{$site->public}}',
+	var conn = new ab.Session('ws://{{$server}}:{{$port}}?token={{$site->public}}',
         function() {
             conn.subscribe('internal', function(topic, data) {
                 $('#removeMe').remove();
