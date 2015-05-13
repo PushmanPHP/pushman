@@ -32,7 +32,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'v0'], function () {
-        Route::any('push', 'v0\EventController@push');
+        Route::post('push', 'v0\EventController@push');
     });
 });
 

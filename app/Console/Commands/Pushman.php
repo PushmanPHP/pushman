@@ -24,16 +24,19 @@ class Pushman extends Command implements SelfHandling {
      */
     public function handle()
     {
+        $port = env('PUSHMAN_INTERNAL', 5555);
+        $public = env('PUSHMAN_PORT', 8080);
+
         $loop = EventLoopFactory::create();
         $pusher = new PushmanHandler();
 
         $context = new Context($loop);
         $pull = $context->getSocket(\ZMQ::SOCKET_PULL);
-        $pull->bind('tcp://127.0.0.1:5555');
+        $pull->bind('tcp://127.0.0.1:' . $port);
         $pull->on('message', [$pusher, 'handleEvent']);
 
         $webSock = new Server($loop);
-        $webSock->listen(8080, '0.0.0.0');
+        $webSock->listen($public, '0.0.0.0');
         $webServer = new IoServer(
             new HttpServer(
                 new WsServer(

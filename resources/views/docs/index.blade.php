@@ -14,7 +14,7 @@
 
 	<h3>PHP Extensions</h3>
 	<p>Pushman requires <a href="http://zeromq.org/">ZeroMQ</a> which is a custom binary (Windows and Linux), along with it's PHP extension.</p>
-	<p>According to zmq's installation set, build it for a Forge server is very easy!</p>
+	<p>You can follow zmq's installation instructions, but you should know building it for a Forge server is very easy!</p>
 	
 	<h4>Step 1 - Install the Binary</h4>
 	<div class="alert alert-info">When installing on Windows, you can just install the .exe from <a class="alert-link" href="http://zeromq.org/distro:microsoft-windows">their website</a>.</div>
@@ -50,11 +50,15 @@
 	<p>Finally, after building the extension: create a new zmq.ini file in your /etc/php5/mods-available directory (if running Forge) or just append the line <code>extension=zmq.so</code> to your php.ini file.</p>
 
 	<p>If running Forge, ensure you run <code>php5enmod zqm</code> to enable the extension and restart FPM with <code>sudo /etc/init.d/php5-fpm restart</code>. I fiddled around a little but it wasn't too tricky to install that requirement.</p>
+
+	<div class="alert alert-info">When building the extension for Windows, you can just download an existing .dll file from their website and place it in the php /ext directory. You will also need to add the <code>extension=zmq.dll</code> to your php.ini file.</div>
 	
 
 	<h3>Port Requirements</h3>
 	<p>Pushman requires port <code>5555</code> but you do <em>not</em> need to write a firewall rule for it, but ensure that nothing else is stealing that port.</p>
 	<p>Pushman runs publically on port <code>8080</code>, you can change it in the source, hopefully in future upgrades that port will be configurable. You <em>need</em> to setup a firewall rule to allow access to port <code>8080</code>.</p>
+
+	<p>You can run Pushman on any two ports which can be configured via the <code>.env</code> file at the root directory.</p>
 
 	<h3>Installing the Code</h3>
 	<p>On forge, you can just build a new site, and give the it the Github repo to install itself. <code>Duffleman/pushman</code> on the <em>master</em> branch is what you need to enter.</p>
@@ -72,6 +76,9 @@
 	<h4>Runtime</h4>
 	<p>Pushman itself can then be run by using <code>php artisan pushman:run</code>. I highly recommend setting up a supervisord task for this or in Forge, go into your server tab and enter the full path to artisan and Forge will auto monitor the task for you.</p>
 
+	<h6>Example Command</h6>
+	<code>php /home/forge/pushman.dfl.mn/artisan pushman:run</code>
+
 	<h2>Usage</h2>
 
 	<h3>Registration</h3>
@@ -80,6 +87,8 @@
 
 	<h3>Handling Users</h3>
 	<p>Other users can then register and you may "promote" them, (set them as Active), or "ban" them, (stop them logging in or using any of their sites). No user can register and instantly use the site, you must approve every user that registers on your instance of Pushman.</p>
+
+	<p>All sub users of your Pushman instance can build their own sites, as an administrator you can access their logs and sites to ensure they are not abusing the service you provide. You can also ban them which will regenerate their private and public tokens to ensure service is discontinued.</p>
 
 	<h3>Building Sites</h3>
 	<p>Pushman allows for multiple sites, so you only need one Pushman server and it can handle all of your sites.</p>
@@ -95,9 +104,11 @@
 
 	<h4>Example Client</h4>
 <pre>
-var conn = new ab.Session('ws://pushman.dfl.mn:8080?token=hnalVjXQjOPisZTXLqUy',
-		function() {
-			conn.subscribe('kittens', function(topic, data) {
+&lt;script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+var conn = new ab.Session('ws://YOUR_SITE.COM:8080?token=PUBLIC_TOKEN',
+	function() {
+		conn.subscribe('kittens', function(topic, data) {
 			// Add Logic to your application here.
 			console.log('kittens event received !');
 			console.log(topic);
@@ -109,13 +120,13 @@ var conn = new ab.Session('ws://pushman.dfl.mn:8080?token=hnalVjXQjOPisZTXLqUy',
 	},
 	{'skipSubprotocolCheck': true}
 );
+&lt;/script&gt;
 </pre>
 
 	<h3>Logging</h3>
 	<p>Every event you push per site to a client is logged so you can revisit it and see how your application is doing.</p>
 
 	<h2>Pushing Events via HTTP</h2>
-	<p>Her is the important part, after everything is setup, after Pushman is running, after clients are listening to events... you need to send an event!</p>
 	
 	<p>The idea is simple, you send a <code>POST</code> request to <code>http://yoursite.com/api/v0/push</code>.</p>
 

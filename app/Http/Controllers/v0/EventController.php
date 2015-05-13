@@ -33,9 +33,11 @@ class EventController extends Controller {
                 'payload'    => json_encode($payload)
             ]);
 
+            $port = env('PUSHMAN_INTERNAL', 5555);
+
             $context = new \ZMQContext();
             $socket = $context->getSocket(\ZMQ::SOCKET_PUSH, 'pushman');
-            $socket->connect("tcp://localhost:5555");
+            $socket->connect("tcp://localhost:" . $port);
 
             $socket->send($body);
 
