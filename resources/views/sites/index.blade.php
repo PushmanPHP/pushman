@@ -30,4 +30,12 @@
 		@endforelse
 	</div>
 
+	@if(Auth::user()->isAdmin() AND env('PUSHMAN_LOG') === 'yes')
+	<div class="row">
+		<div class="col-lg-2 col-lg-offset-10 text-right">
+			<a class="btn btn-info btn-block" href="/log/all">See Pushman Logs</a>
+		</div>
+	</div>
+	@endif
+
 @endsection

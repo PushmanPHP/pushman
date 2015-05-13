@@ -125,6 +125,8 @@ var conn = new ab.Session('ws://YOUR_SITE.COM:8080?token=PUBLIC_TOKEN',
 
 	<h3>Logging</h3>
 	<p>Every event you push per site to a client is logged so you can revisit it and see how your application is doing.</p>
+	<p>Pushman also logs itself internally and if you want can push those logs back out over a websocket.</p>
+	<p>In your <code>.env</code> file, change <code>PUSHMAN_LOG</code> from 'no' to 'yes', then setup a new site for <code>http://localhost</code> and give the private key to the environment variables as <code>PUSHMAN_PRIVATE</code>. Pushman will then log itself and you can view the logs live by going to the <a href="/log/all">logs</a> of your site if you're an Admin.</p>
 
 	<h2>Pushing Events via HTTP</h2>
 	

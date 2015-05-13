@@ -18,6 +18,7 @@ Route::group(['prefix' => 'users'], function () {
     get('{user}/ban', 'UsersController@ban');
 });
 
+get('log/all', 'LogController@all');
 get('log/{log}', 'LogController@show');
 
 Route::group(['prefix' => 'auth'], function () {

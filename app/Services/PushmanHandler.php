@@ -39,11 +39,11 @@ class PushmanHandler implements WampServerInterface {
         $site = Site::where('public', $token)->first();
 
         if ($token === false OR is_null($site)) {
-            echo("{$conn->resourceId} tried to connect on token {$token} but failed.\n");
+            qlog("{$conn->resourceId} tried to connect on token {$token} but failed.");
             $conn->close();
         } else {
             $this->clients->attach($conn);
-            echo("New connection! ({$conn->resourceId}) with token ID: {$token}, site: {$site->url}\n");
+            qlog("New connection! ({$conn->resourceId}) with token ID: {$token}, site: {$site->url}");
         }
     }
 
@@ -55,14 +55,14 @@ class PushmanHandler implements WampServerInterface {
     function onClose(ConnectionInterface $conn)
     {
         $this->clients->detach($conn);
-        echo("Connection {$conn->resourceId} has disconnected.\n");
+        qlog("Connection {$conn->resourceId} has disconnected.");
         foreach ($this->subscribedTopics as $type => $topic) {
             $topic->remove($conn);
-            echo("Checking {$topic} for broadcast requirement.\n");
+            qlog("Checking {$topic} for broadcast requirement.");
             $subCount = count($topic);
-            echo("{$topic} still has {$subCount} subscribers.\n");
+            qlog("{$topic} still has {$subCount} subscribers.");
             if (count($topic) == 0) {
-                echo("{$topic} topic doesn't have any more subs. Removing it.\n");
+                qlog("{$topic} topic doesn't have any more subs. Removing it.");
                 unset($this->subscribedTopics[$type]);
             }
         }
@@ -77,7 +77,7 @@ class PushmanHandler implements WampServerInterface {
      */
     function onError(ConnectionInterface $conn, \Exception $e)
     {
-        echo("An error occured?\n");
+        qlog("ERROR: " . $e->getMessage());
     }
 
     /**
@@ -89,7 +89,7 @@ class PushmanHandler implements WampServerInterface {
      */
     function onCall(ConnectionInterface $conn, $id, $topic, array $params)
     {
-        echo("{$conn->resourceId} has tried to call topic {$topic->getId()}\n");
+        qlog("{$conn->resourceId} has tried to call topic {$topic->getId()}");
         $conn->callError($id, $topic, 'You are not allowed to make calls')->close();
     }
 
@@ -113,7 +113,7 @@ class PushmanHandler implements WampServerInterface {
         $topic_id = $id . '.' . $token_string;
 
         $this->subscribedTopics[$topic_id] = $topic;
-        echo("{$conn->resourceId} has subscribed to topic {$topic_id}\n");
+        qlog("{$conn->resourceId} has subscribed to topic {$topic_id}");
     }
 
     /**
@@ -123,7 +123,7 @@ class PushmanHandler implements WampServerInterface {
      */
     function onUnSubscribe(ConnectionInterface $conn, $topic)
     {
-        echo("{$conn->resourceId} has unsubscribed from topic {$topic->getId()}\n");
+        qlog("{$conn->resourceId} has unsubscribed from topic {$topic->getId()}");
     }
 
     /**
@@ -136,7 +136,7 @@ class PushmanHandler implements WampServerInterface {
      */
     function onPublish(ConnectionInterface $conn, $topic, $event, array $exclude, array $eligible)
     {
-        echo("Client {$conn->resourceId} is trying to publish something?\n");
+        qlog("Client {$conn->resourceId} is trying to publish something?");
         $conn->close();
     }
 
@@ -154,15 +154,13 @@ class PushmanHandler implements WampServerInterface {
         }
 
         if ( !array_key_exists($eventData['type'], $this->subscribedTopics)) {
-            echo("The {$eventData['type']} event was pushed but no one listened.\n");
+            qlog("The {$eventData['type']} event was pushed but no one listened.", $eventData['log']);
 
             return;
         }
 
-        echo("The {$eventData['type']} event has been pushed to at least 1 client.\n");
-
         $topic = $this->subscribedTopics[$eventData['type']];
-
         $topic->broadcast($eventData['payload']);
+        qlog("The {$eventData['type']} event has been pushed to at least 1 client.", $eventData['log']);
     }
 }
