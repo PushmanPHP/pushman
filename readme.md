@@ -4,6 +4,8 @@ Pushman is an open source web socket event manager. It allows you to push events
 
 You can bind server side events to client notifications.
 
+Demo on the [Pushman Website](http://pushman.dfl.mn).
+
 ## Official Documentation
 
 Documentation for the framework can be found on the [Pushman website](http://pushman.dfl.mn/docs).

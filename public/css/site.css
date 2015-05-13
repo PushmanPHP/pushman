@@ -9,3 +9,7 @@ body {
 .hidden { 
 	display:none;
 }
+
+.really_small {
+	font-size:12px;
+}
