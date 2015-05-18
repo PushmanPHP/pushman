@@ -5,23 +5,14 @@
 	margin-bottom:40px;
 }
 
-nav.navbar {
-	border-radius:0;
-	background-color:white;
+.removed {
+	@include transition(opacity 1s ease-out);
+	opacity:0;
+	height:0;
+	overflow:hidden;
 }
 
-nav.nav-home {
-	margin-bottom:0;
-}
-
-.alert {
-	border-radius:0;
-}
-.alert-info {
-	background-color:$blue-secondary;
-	color:white;
-	border-color:$blue-secondary-active;
-}
-.alert-link {
-	color:$white !important;
+.readded {
+	opacity:1;
+	height:auto;
 }

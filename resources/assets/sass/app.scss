@@ -8,11 +8,31 @@
 
 @import "_homepage";
 
-// body {
-// 	background-color:$grey-cool;
-// 	background-image:url(/img/tile/square_bg.png);
-// }
+nav.navbar {
+	border-radius:0;
+	background-color:white;
+}
 
-// * {
-//   -webkit-transition: all 1s;
-// }
+nav.nav-home {
+	margin-bottom:0;
+}
+
+.alert {
+	border-radius:0;
+}
+.alert-info {
+	background-color:$blue-secondary;
+	color:white;
+	border-color:$blue-secondary-active;
+}
+.alert-link {
+	color:$white !important;
+}
+
+.panel.panel-danger {
+	border-color:$red;
+	.panel-heading {
+		background-color:lighten($red,25%);
+		color:$white;
+	}
+}

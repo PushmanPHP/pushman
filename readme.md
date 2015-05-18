@@ -7,8 +7,6 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.1
-* Put public token for public channel back on site homepage.
-  * Add "click to reveal keys" button back?
 * OSX fonts look odd. Maybe its the modular-scale thing?
 * Look into why div.cover does not work on mobile devices.
 

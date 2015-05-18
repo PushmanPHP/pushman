@@ -5,7 +5,7 @@ use Pushman\Channel;
 use Pushman\Http\Requests;
 use Pushman\Http\Requests\CreateChannelRequest;
 use Pushman\Http\Requests\UpdateMaxConnectionsRequest;
-use Pushman\Respositories\ChannelRepository;
+use Pushman\Repositories\ChannelRepository;
 use Pushman\Site;
 
 class ChannelController extends Controller {

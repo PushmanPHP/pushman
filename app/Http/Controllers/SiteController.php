@@ -3,7 +3,7 @@
 use Illuminate\Http\Response;
 use Pushman\Http\Requests;
 use Pushman\Http\Requests\CreateSiteRequest;
-use Pushman\Respositories\SiteRepository;
+use Pushman\Repositories\SiteRepository;
 use Pushman\Site;
 
 class SiteController extends Controller {

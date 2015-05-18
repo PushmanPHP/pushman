@@ -1,4 +1,4 @@
-<?php namespace Pushman\Respositories;
+<?php namespace Pushman\Repositories;
 
 use DB;
 use Illuminate\Support\Collection;

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Pushman\Interfaces\Ownable;
-use Pushman\Respositories\ChannelRepository;
+use Pushman\Repositories\ChannelRepository;
 
 class Site extends Model implements Ownable {
 

@@ -7058,23 +7058,15 @@ h6 {
 .bottom40 {
   margin-bottom: 40px; }
 
-nav.navbar {
-  border-radius: 0;
-  background-color: white; }
+.removed {
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden; }
 
-nav.nav-home {
-  margin-bottom: 0; }
-
-.alert {
-  border-radius: 0; }
-
-.alert-info {
-  background-color: #79b9e7;
-  color: white;
-  border-color: #6da6cf; }
-
-.alert-link {
-  color: #fff !important; }
+.readded {
+  opacity: 1;
+  height: auto; }
 
 html, body {
   height: 100%;
@@ -7115,6 +7107,30 @@ div.cover-about {
   box-shadow: inset 0 0 10px #222;
   -moz-box-shadow: inset 0 0 10px #222;
   -webkit-box-shadow: inset 0 0 10px #222; }
+
+nav.navbar {
+  border-radius: 0;
+  background-color: white; }
+
+nav.nav-home {
+  margin-bottom: 0; }
+
+.alert {
+  border-radius: 0; }
+
+.alert-info {
+  background-color: #79b9e7;
+  color: white;
+  border-color: #6da6cf; }
+
+.alert-link {
+  color: #fff !important; }
+
+.panel.panel-danger {
+  border-color: #f42121; }
+  .panel.panel-danger .panel-heading {
+    background-color: #fa9a9a;
+    color: #fff; }
 
 /*# sourceMappingURL=app.css.map */
 /*# sourceMappingURL=all.css.map */

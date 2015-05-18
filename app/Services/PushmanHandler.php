@@ -2,7 +2,7 @@
 
 use DB;
 use Pushman\Channel;
-use Pushman\Respositories\ClientRepository;
+use Pushman\Repositories\ClientRepository;
 use Pushman\Site;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\ServerProtocol as WAMP;
@@ -12,7 +12,7 @@ use Ratchet\Wamp\WampServerInterface;
 class PushmanHandler implements WampServerInterface {
 
     /**
-     * @var \Pushman\Respositories\ClientRepository
+     * @var \Pushman\Repositories\ClientRepository
      */
     protected $clients;
 

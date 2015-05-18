@@ -1,4 +1,4 @@
-<?php namespace Pushman\Respositories;
+<?php namespace Pushman\Repositories;
 
 use Pushman\Exceptions\InvalidSiteException;
 use Pushman\Site;

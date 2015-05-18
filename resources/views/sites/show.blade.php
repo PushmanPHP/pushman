@@ -5,7 +5,30 @@
 	<div class="row bottom20">
 		<div class="col-lg-12">
 			<h2>{{ str_limit($site->name,25) }}</h2>
-			<h5>{{ $site->url }} <small><code>{{$site->private}}</code></small></h5>
+			<h5>{{ $site->url }}</h5>
+		</div>
+	</div>
+
+	<div class="row animated removed" id="rowKeys">
+		<div class="col-lg-12">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title pull-right" id="btnHideKeys"><a href="#">&times;</a></h3>
+					<h3 class="panel-title">Site Keys</h3>
+				</div>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Public</th>
+							<td><code>{{ Pushman\Repositories\ChannelRepository::getPublic($site)->public }}</code></td>
+						</tr>
+						<tr>
+							<th>Private</th>
+							<td><code>{{ $site->private }}</code></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
@@ -45,13 +68,16 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-4">
-			<a href="/sites/{{$site->id}}/channels" class="btn btn-info btn-block">Channel Management</a>
+		<div class="col-lg-3">
+			<a href="/sites/{{$site->id}}/channels" class="btn btn-primary btn-block">Channel Management</a>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-3">
+			<a href="#" id="btnRevealKeys" class="btn btn-info btn-block">Reveal Keys</a>
+		</div>
+		<div class="col-lg-3">
 			<a href="/sites/{{$site->id}}/regenerate" class="btn btn-warning btn-block swal">Regenerate Token</a>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-3">
 			<a href="/sites/{{$site->id}}/delete" class="btn btn-danger btn-block swal">Delete Site</a>
 		</div>
 	</div>
@@ -118,6 +144,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
 $(document).ready(function() {
+	$('#btnRevealKeys').on('click', function(event) {
+		event.preventDefault();
+		var keys = $('#rowKeys');
+
+		keys.addClass('readded');
+	});
+	$('#btnHideKeys').on('click', function(event) {
+		event.preventDefault();
+		var keys = $('#rowKeys');
+
+		keys.removeClass('readded');
+	});
 	$('#requestForm').on('submit', function(event) {
 		event.preventDefault();
 		$('#response').html('');
