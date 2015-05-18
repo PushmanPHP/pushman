@@ -14,7 +14,13 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>Push Event</h2>
+				<h2>API Endpoints</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Push Event</h3>
 				<span class="label label-danger">AUTH</span> <span class="label label-info">POST</span> :: /api/push
 				<p>This endpoint pushes an event to all listening clients on a single site.</p>
 
@@ -87,6 +93,138 @@ Content-Type: multipart/form-data;
     },
     "payload": {
         "foo": "bar"
+    }
+}
+</code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Channel Listing</h3>
+				<span class="label label-danger">AUTH</span> <span class="label label-success">GET</span> :: /api/channels
+				<p>This method returns a list of all channels associated with your site. (including internal channels and the public chanel)</p>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Parameter</th>
+							<th>Required</th>
+							<th>Requirements</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>private</td>
+							<td><span class="label label-success">yes</span></td>
+							<td>It must be a valid private key from one of your sites, exactly 60 characters.</td>
+							<td>The private key of a site you manage.</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="row">
+					<div class="col-lg-6">
+						<h5>Request</h5>
+<pre><code class="json">POST /api/channels HTTP/1.1
+Host: localhost
+Cache-Control: no-cache
+{
+    "private": "qYna0HGtVAUyCePv67RwCLh6",
+}
+</code></pre>
+					</div>
+					<div class="col-lg-6">
+						<h5>Response</h5>
+<pre><code class="javascript">[
+    {
+        "id": "4",
+        "name": "public",
+        "public": "xhbohWG3OuMXPERaPYRh",
+        "refreshes": "no",
+        "max_connections": "0",
+        "active_users": "0",
+        "events_fired": "65",
+        "created_at": "2015-05-17 17:16:39"
+    },
+    {
+        "id": "9",
+        "name": "admin",
+        "public": "kDo0fkRCRHck4Oalzyt7",
+        "refreshes": "yes",
+        "max_connections": "10",
+        "active_users": "0",
+        "events_fired": "0",
+        "created_at": "2015-05-18 16:55:49"
+    }
+]
+</code></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Channel Information</h3>
+				<span class="label label-danger">AUTH</span> <span class="label label-success">GET</span> :: /api/channel
+				<p>This method returns information on a channel.</p>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Parameter</th>
+							<th>Required</th>
+							<th>Requirements</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>private</td>
+							<td><span class="label label-success">yes</span></td>
+							<td>It must be a valid private key from one of your sites, exactly 60 characters.</td>
+							<td>The private key of a site you manage.</td>
+						</tr>
+						<tr>
+							<td>channel</td>
+							<td><span class="label label-success">yes</span></td>
+							<td>Must be a valid channel name.</td>
+							<td>a name of a channel your site has.</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="row">
+					<div class="col-lg-6">
+						<h5>Request</h5>
+<pre><code class="json">POST /api/channel HTTP/1.1
+Host: localhost
+Cache-Control: no-cache
+{
+    "private": "qYna0HGtVAUyCePv67RwCLh6",
+    "channel": "auth"
+}
+</code></pre>
+					</div>
+					<div class="col-lg-6">
+						<h5>Response</h5>
+<pre><code class="javascript">{
+    "id": "8",
+    "name": "auth",
+    "public": "CpluouZMI9m1dejqvGzK",
+    "refreshes": "no",
+    "max_connections": "100",
+    "active_users": "0",
+    "events_fired": "0",
+    "created_at": "2015-05-18 16:55:41",
+    "token_expires": {
+        "date": "2015-05-18 17:00:00.000000",
+        "timezone_type": 3,
+        "timezone": "UTC"
     }
 }
 </code></pre>

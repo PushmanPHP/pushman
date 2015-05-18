@@ -36,5 +36,5 @@ get('about', 'WelcomeController@about');
 get('settings', 'WelcomeController@settings');
 
 post('api/push', 'APIController@push');
-post('api/channel', 'APIController@channel');
-post('api/channels', 'APIController@channels');
+get('api/channel', 'APIController@channel');
+get('api/channels', 'APIController@channels');

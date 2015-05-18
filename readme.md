@@ -7,7 +7,6 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.1
-* Update documentation for new api /channels and /channel
 * Put public token for public channel back on site homepage.
   * Add "click to reveal keys" button back?
 * OSX fonts look odd. Maybe its the modular-scale thing?
@@ -49,7 +48,7 @@ $ sudo make install
 #### Port Requirements
 Pushman requires port `5555` but you do _not_ need to write a firewall rule for it, but ensure that nothing else is stealing that port.
 
-Pushman runs publically on port `8080`, you can change it in the source, hopefully in future upgrades that port will be configurable. You _need_ to setup a firewall rule to allow access to port `8080`.
+Pushman runs publically on port `8080`, you can change it in the source though. You _need_ to setup a firewall rule to allow access to port `8080`.
 
 You can run Pushman on any two ports which can be configured via the `.env` file at the root directory.
 
