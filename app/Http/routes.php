@@ -2,14 +2,17 @@
 
 get('/', 'WelcomeController@index');
 
-get('home', 'SitesController@index');
-get('sites', 'SitesController@index');
+get('dashboard', 'DashboardController@dashboard');
 
-get('settings', 'AuthController@getSettings');
+resource('sites', 'SiteController', ['only' => ['create', 'store', 'show', 'destroy']]);
+get('sites/{sites}/regenerate', 'SiteController@regenerate');
+get('sites/{sites}/delete', 'SiteController@destroy');
 
-get('sites/{sites}/delete', 'SitesController@destroy');
-get('sites/{sites}/regen', 'SitesController@regenTokens');
-resource('sites', 'SitesController');
+resource('sites/{sites}/channels', 'ChannelController');
+get('sites/{sites}/channels/{channels}/regenerate', 'ChannelController@regenerate');
+get('sites/{sites}/channels/{channels}/delete', 'ChannelController@destroy');
+get('sites/{sites}/channels/{channels}/toggle', 'ChannelController@toggle');
+post('sites/{sites}/channels/{channels}/max', 'ChannelController@maxConnections');
 
 Route::group(['prefix' => 'users'], function () {
     get('/', 'UsersController@index');
@@ -17,9 +20,6 @@ Route::group(['prefix' => 'users'], function () {
     get('{user}/promote', 'UsersController@promote');
     get('{user}/ban', 'UsersController@ban');
 });
-
-get('log/all', 'LogController@all');
-get('log/{log}', 'LogController@show');
 
 Route::group(['prefix' => 'auth'], function () {
     get('login', 'AuthController@getLogin');
@@ -31,12 +31,10 @@ Route::group(['prefix' => 'auth'], function () {
     get('logout', 'AuthController@getLogout');
 });
 
-Route::group(['prefix' => 'api'], function () {
-    Route::group(['prefix' => 'v0'], function () {
-        Route::post('push', 'v0\EventController@push');
-    });
-});
+get('documentation', 'DocsController@index');
+get('about', 'WelcomeController@about');
+get('settings', 'WelcomeController@settings');
 
-Route::group(['prefix' => 'docs'], function () {
-    get('/', 'DocsController@index');
-});
+post('api/push', 'APIController@push');
+post('api/channel', 'APIController@channel');
+post('api/channels', 'APIController@channels');

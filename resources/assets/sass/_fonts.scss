@@ -1,0 +1,37 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight:200;
+	font-size:modular-scale(2);
+	color:$black;
+}
+
+small {
+	font-weight:200 !important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight:200;
+}
+
+h1 {
+	font-size:modular-scale(6);
+}
+h2 {
+	font-size:modular-scale(5);
+}
+h3 {
+	font-size:modular-scale(4);
+}
+h4 {
+	font-size:modular-scale(3);
+}
+h5 {
+	font-size:modular-scale(2);
+}
+h6 {
+	font-size:modular-scale(2);
+}
+
+.about_font {
+	font-size:modular-scale(1);
+}

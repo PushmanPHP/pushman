@@ -3,9 +3,9 @@
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Pushman\Services\PushmanHandler;
+use Pushman\Services\PushmanWampServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
-use Ratchet\Wamp\WampServer;
 use Ratchet\WebSocket\WsServer;
 use React\EventLoop\Factory as EventLoopFactory;
 use React\Socket\Server;
@@ -40,7 +40,7 @@ class Pushman extends Command implements SelfHandling {
         $webServer = new IoServer(
             new HttpServer(
                 new WsServer(
-                    new WampServer(
+                    new PushmanWampServer(
                         $pusher
                     )
                 )

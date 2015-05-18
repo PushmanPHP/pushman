@@ -13,47 +13,53 @@ class UsersController extends Controller {
     public function __construct(Guard $guard, FlashNotifier $flash)
     {
         $this->middleware('auth');
+        $this->middleware('admin');
         $this->guard = $guard;
         $this->flash = $flash;
     }
 
     public function index()
     {
-        $this->checkForAdmin();
-
-        $users = User::with('sites')->get();
+        $users = User::all();
 
         return view('users.index', compact('users'));
     }
 
     public function show(User $user)
     {
-        $this->checkForAdmin();
-
         return view('users.show', compact('user'));
-    }
-
-    private function checkForAdmin()
-    {
-        if ($this->guard->user()->status !== 'admin') {
-            abort(403, 'Unauthorized.');
-        }
     }
 
     public function promote(User $user)
     {
+        if ($user->isAdmin()) {
+            $this->flash->error('Unable to change an admin.');
+
+            return redirect()->back();
+        }
+
         $user->status = 'active';
         $user->save();
 
         $this->flash->success('User has been activated.');
 
-        return redirect('/users/' . $user->id);
+        return redirect()->back();
     }
 
     public function ban(User $user)
     {
+        if ($user->isAdmin()) {
+            $this->flash->error('Unable to change an admin.');
+
+            return redirect()->back();
+        }
+
         foreach ($user->sites as $site) {
-            $site->genTokens();
+            foreach ($site->channels as $channel) {
+                $channel->generateToken();
+                $channel->save();
+            }
+            $site->generateToken();
             $site->save();
         }
 

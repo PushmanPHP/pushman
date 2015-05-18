@@ -1,14 +1,13 @@
 <?php
 
 use Carbon\Carbon;
-use Pushman\IntLog;
-use Pushman\Services\EventHandler;
+use Pushman\InternalLog;
 
 function qlog($log, $shouldLog = true)
 {
     if ($shouldLog) {
         echo("{$log}\n");
-        IntLog::create(['log' => $log]);
+        InternalLog::create(['log' => $log]);
 
         $canLog = env('PUSHMAN_LOG', 'no');
 
@@ -16,7 +15,12 @@ function qlog($log, $shouldLog = true)
             $private = env('PUSHMAN_PRIVATE');
             $timestamp = Carbon::now()->format("Y-m-d H:i:s");
             $jsonLog = ['log' => $log, 'timestamp' => $timestamp];
-            (new EventHandler())->handle($private, 'internal', json_encode($jsonLog), false);
+            //(new EventHandler())->handle($private, 'internal', json_encode($jsonLog), false);
         }
     }
+}
+
+function user()
+{
+    return app('auth')->user();
 }

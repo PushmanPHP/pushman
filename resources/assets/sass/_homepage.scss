@@ -1,0 +1,53 @@
+html,body {
+	height:100%;
+	width:100%;
+}
+
+div.cover {
+
+	background-color:$blue;
+	width:100%;
+	@include calc(height, "100% - 52px");
+	color:white;
+	text-align:center;
+	background-image:url(/img/tile/square_bg.png);
+
+	box-shadow: inset 0 0 10px $black;
+	-moz-box-shadow: inset 0 0 10px $black;
+	-webkit-box-shadow: inset 0 0 10px $black;
+
+	div.container-cover {
+		position:relative;
+		top:50%;
+		@include transform(translateY(-50%));
+		a {
+			color:$white;
+			text-decoration:underline;
+			&:hover {
+				color:$grey-cool;
+			}
+		}
+		h1 {
+			font-size:modular-scale(6);
+		}
+		h4 {
+			font-size:modular-scale(3);
+		}
+		p {
+			// font-size:modular-scale(2);
+		}
+	}
+
+}
+
+div.cover-about {
+	background-color:$blue;
+	width:100%;
+	color:white;
+	text-align:center;
+	background-image:url(/img/tile/square_bg.png);
+
+	box-shadow: inset 0 0 10px $black;
+	-moz-box-shadow: inset 0 0 10px $black;
+	-webkit-box-shadow: inset 0 0 10px $black;
+}

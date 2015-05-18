@@ -27,9 +27,9 @@ class RouteServiceProvider extends ServiceProvider {
 
         parent::boot($router);
 
-        $router->model('sites', 'Pushman\Site');
         $router->model('user', 'Pushman\User');
-        $router->model('log', 'Pushman\Log');
+        $router->model('sites', 'Pushman\Site');
+        $router->model('channels', 'Pushman\Channel');
     }
 
     /**

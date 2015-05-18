@@ -7,9 +7,7 @@
 		<title>Pushman</title>
 
 		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/css/flat-ui.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="/css/site.css">
+		<link href="/css/all.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +20,9 @@
 
 		@include('_navigation')
 		
-		@include('vendor.flash.message')
+		@if(!isset($className))
+			@include('vendor.flash.message', ['cover' => false])
+		@endif
 		
 		@section('container')
 			<div class="container">
@@ -31,8 +31,7 @@
 		@show
 
 		@section('javascript')
-			<script src="//code.jquery.com/jquery.js"></script>
-			<script src="/js/flat-ui.min.js"></script>
+			<script src="/js/all.js"></script>
 		@show
 	</body>
 </html>

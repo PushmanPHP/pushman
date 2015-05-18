@@ -12,5 +12,20 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.sass('app.scss');
+
+    mix.styles([
+        'vendor/sweet-alert.css',
+        'vendor/bootstrap-editable.css',
+    	'app.css'
+    ], null, 'public/css');
+
+    mix.scripts([
+        'vendor/jquery-2.1.4.min.js',
+        '../../resources/assets/bootstrap/assets/javascripts/bootstrap.js',
+        'vendor/sweet-alert.js',
+        'vendor/bootstrap-editable.js',
+    	'vendor/autobahn.min.js',
+    	'site.js'
+    ], null, 'public/js');
 });

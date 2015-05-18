@@ -3,18 +3,14 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-lg-12">
-			<h4>Create Site</h4>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-6 col-lg-offset-3">
+		<div class="col-lg-4 col-lg-offset-4">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					{!! Form::open(['class' => 'form-horizontal', 'route' => 'sites.store']) !!}
-						
-						<!-- name Field -->
+					{!! Form::open(['route' => 'sites.store', 'class' => 'form-horizontal']) !!}
+
+						<legend>Build a Site</legend>
+					
+						<!-- Name Field -->
 						<div class="form-group">
 							{!! Form::label('name', 'Name', ['class' => 'control-label col-sm-2']) !!}
 							<div class="col-sm-10">
@@ -35,11 +31,14 @@
 						<!-- Submit Button -->
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
-								<button type="submit" class="btn btn-primary btn-block">Create</button>
+								<button type="submit" class="btn btn-success btn-block">Build Site</button>
 							</div>
 						</div>
 
 					{!! Form::close() !!}
+				</div>
+				<div class="panel-footer">
+					<a href="/dashboard">Return to Dashboard</a>
 				</div>
 			</div>
 		</div>

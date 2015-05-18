@@ -16,7 +16,12 @@ class VerifyCsrfToken extends BaseVerifier {
     {
         if ($request->getMethod() === 'POST') {
             $url = $request->url();
-            if (str_contains($url, '/api/v')) {
+
+            if (preg_match('/\/sites\/\d+\/channels\/\d+\/max/', $url) === 1) {
+                return $next($request);
+            }
+
+            if (str_contains($url, '/api/')) {
                 return $next($request);
             }
         }

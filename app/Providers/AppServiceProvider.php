@@ -1,6 +1,7 @@
 <?php namespace Pushman\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Pushman\Services\PushPrep;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -21,7 +22,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->singleton('pushprep', 'Pushman\Services\PushPrep');
 	}
 
 }

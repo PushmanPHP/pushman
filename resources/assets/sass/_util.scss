@@ -1,0 +1,27 @@
+.bottom20 {
+	margin-bottom:20px;
+}
+.bottom40 {
+	margin-bottom:40px;
+}
+
+nav.navbar {
+	border-radius:0;
+	background-color:white;
+}
+
+nav.nav-home {
+	margin-bottom:0;
+}
+
+.alert {
+	border-radius:0;
+}
+.alert-info {
+	background-color:$blue-secondary;
+	color:white;
+	border-color:$blue-secondary-active;
+}
+.alert-link {
+	color:$white !important;
+}

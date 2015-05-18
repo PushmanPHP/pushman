@@ -20,7 +20,7 @@
 						<td><a href="/users/{{$user->id}}">{{$user->username}}</a></td>
 						<td>{{$user->email}}</td>
 						<td>{{ucwords($user->status)}}</td>
-						<td>{{$user->sites->count()}}</td>
+						<td>{{$user->sites->count() }}</td>
 					</tr>
 				@empty
 					<tr>

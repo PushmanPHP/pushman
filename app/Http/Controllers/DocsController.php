@@ -6,6 +6,7 @@ class DocsController extends Controller {
 
     public function index()
     {
-        return view('docs.index');
+        $className = 'nav-home';
+        return view('docs.index', compact('className'));
     }
 }
