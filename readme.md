@@ -6,7 +6,8 @@ You can bind server side events to client notifications.
 
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
-## Todo for V2
+## Todo for Version 2.1
+* Update documentation for new api /channels and /channel
 * OSX fonts look odd. Maybe its the modular-scale thing?
 * Look into why div.cover does not work on mobile devices.
 
