@@ -1,5 +1,7 @@
 ## Pushman
 
+[![Latest Stable Version](https://poser.pugx.org/pushman/pushman/v/stable)](https://packagist.org/packages/pushman/pushman) [![Total Downloads](https://poser.pugx.org/pushman/pushman/downloads)](https://packagist.org/packages/pushman/pushman) [![Latest Unstable Version](https://poser.pugx.org/pushman/pushman/v/unstable)](https://packagist.org/packages/pushman/pushman) [![License](https://poser.pugx.org/pushman/pushman/license)](https://packagist.org/packages/pushman/pushman)
+
 Pushman is an open source web socket event manager. It allows you to push events over HTTP to your own Pushman server which will push event information down to a client via a Web Socket.
 
 You can bind server side events to client notifications.
@@ -9,6 +11,8 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 ## Todo for Version 2.1
 * OSX fonts look odd. Maybe its the modular-scale thing?
 * Look into why div.cover does not work on mobile devices.
+* Write tests :/ Integrate with travis-ci
+* Integrate with StyleCI
 
 ## Official Documentation
 Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/docs).
