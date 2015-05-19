@@ -43,7 +43,7 @@ class ClientRepository {
     {
         $resourceId = $conn->resourceId;
 
-        qlog("{$resourceId} disconnected.\n");
+        qlog("{$resourceId} disconnected.");
         self::$clients->forget($resourceId);
 
         $client = Client::where('resource_id', $resourceId)->first();
