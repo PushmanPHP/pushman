@@ -1,9 +1,10 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "pushman/pushman",
+    "description": "Pushman PHP Websocket Manager",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "pushman",
+        "websocket"
     ],
     "license": "MIT",
     "type": "project",
