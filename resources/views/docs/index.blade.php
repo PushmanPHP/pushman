@@ -69,7 +69,7 @@ Host: localhost
 Cache-Control: no-cache
 Content-Type: multipart/form-data;
 {
-    "private": "qYna0HGtVAUyCePv67RwCLh6",
+    "private": "gIcLWblryEvOqplqVpCwNmXZGPjzAYKyNAUtcuuzfNk...",
     "event": "kittens",
     "channel": "auth",
     "payload": {
@@ -133,7 +133,7 @@ Content-Type: multipart/form-data;
 Host: localhost
 Cache-Control: no-cache
 {
-    "private": "qYna0HGtVAUyCePv67RwCLh6",
+    "private": "gIcLWblryEvOqplqVpCwNmXZGPjzAYKyNAUtcuuzfNk..."
 }
 </code></pre>
 					</div>
@@ -205,7 +205,7 @@ Cache-Control: no-cache
 Host: localhost
 Cache-Control: no-cache
 {
-    "private": "qYna0HGtVAUyCePv67RwCLh6",
+    "private": "gIcLWblryEvOqplqVpCwNmXZGPjzAYKyNAUtcuuzfNk...",
     "channel": "auth"
 }
 </code></pre>

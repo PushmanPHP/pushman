@@ -2,6 +2,10 @@
 
 @section('container')
 
+<!-- ****************************************************************************************** -->
+<!-- Scroll down to the Javascript at the bottom of the page if you want to see how this works! -->
+<!-- ****************************************************************************************** -->
+
 <div class="cover-about bottom40">
 		<div class="container">
 
@@ -16,62 +20,46 @@
 
 	<div class="container">
 
-		<div class="row bottom20">
-			<div class="col-lg-12">
-				<h4>Catch the event</h4>
-			</div>
-			<div class="col-lg-6">
-				<h6>What event should we listen for?</h6>
-				{!! Form::open(['id' => 'listenForm', 'class'=>'form form-inline']) !!}
-					<!-- listen_event_name Field -->
-					<div class="form-group">
-						{!! Form::label('listen_event_name', 'Event: ', ['class' => 'control-label']) !!}
-						{!! Form::text('listen_event_name', null, ['class' => 'form-control']) !!}
-						{!! $errors->first('listen_event_name', '<p class="help-block">:message</p>') !!}
-					</div>
-					<!-- Submit Button -->
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block">Listen</button>
-					</div>
-				{!! Form::close() !!}
-			</div>
-			<div class="col-lg-6">
-				<div class="row bottom20">
-					<div class="col-lg-3 col-lg-offset-6">
-						<a id="btnConnect" href="#" class="btn btn-block btn-success">Connect</a>	
-					</div>
-					<div class="col-lg-3">
-						<a id="btnDisconnect" href="#" class="btn btn-block btn-danger">Disconnect</a>
+		<div class="row">
+			<div class="col-lg-6 right-border-grey">
+				<div class="bottom20">
+					<h4>1. Setup catching the event</h4>
+					<p class="about_font">What event should we listen for?</p>
+					{!! Form::open(['id' => 'listenForm', 'class'=>'form form-inline']) !!}
+						<!-- listen_event_name Field -->
+						<div class="form-group">
+							{!! Form::label('listen_event_name', 'Event: ', ['class' => 'control-label']) !!}
+							{!! Form::text('listen_event_name', null, ['class' => 'form-control']) !!}
+							{!! $errors->first('listen_event_name', '<p class="help-block">:message</p>') !!}
+						</div>
+						<!-- Submit Button -->
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block">Listen</button>
+						</div>
+					{!! Form::close() !!}
+				</div>
+
+				<div class="row bottom40">
+					<div class="col-lg-12">
+						<h4>Output Log</h4>
+						<pre><code class="javascript" id="divLog"></code></pre>
 					</div>
 				</div>
+
 				<div class="row">
-					<div class="col-lg-6 col-lg-offset-6 text-right">
+					<div class="col-lg-4">
+						<a id="btnConnect" href="#" class="btn btn-block btn-success btn-xs">Connect</a>	
+					</div>
+					<div class="col-lg-4">
+						<a id="btnDisconnect" href="#" class="btn btn-block btn-danger btn-xs">Disconnect</a>
+					</div>
+					<div class="col-lg-4 text-right">
 						<strong>Status: </strong> <span id="connectionState">Disconnected</span>
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-12">
-				<h4>Output Log</h4>
-				<pre><code class="javascript" id="divLog"></code></pre>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-12">
-				<hr>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-12">
-				<h4>Push an Event</h4>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-6 left-border-grey">
+				<h4>2. Push an Event</h4>
 				{!! Form::open(['id' => 'requestForm', 'class' => 'form-horizontal']) !!}
 				
 					<!-- Channel Field -->
@@ -109,11 +97,51 @@
 					</div>
 					
 				{!! Form::close() !!}
-			</div>
-			<div class="col-lg-6">
-				<pre><code class="javascript" id="response"></code></pre>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<h4>Returned Response</h4>
+						<pre><code class="javascript" id="response"></code></pre>
+					</div>
+				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<hr>
+			</div>
+		</div>
+
+		<div class="row bottom20">
+			<div class="col-lg-12 meaty_font">
+				<h4>Stuck using the Demo?</h4>
+				<p>There are two parts to how this works. 1. Catching the Event, where you emulate your client, and 2. Push an Event, where you emulate sending a HTTP POST request from the server to Pushman.</p>
+
+				<ul>
+					<li>Enter an Event Name on the left. Let's use <code>kittens_are_cute</code>!</li>
+					<li>Click 'Listen'. This means your client is listening for the <code>kittens_are_cute</code> event.</li>
+					<li>Move to Step 2, push an event out on the public channel called <code>kittens_are_cute</code>.</li>
+					<li>Change the payload if you want!</li>
+					<li>As you hit 'Push Event', watch the Server respond, is status set to <code>success</code>?</li>
+					<li>Watch the <em>Output Log</em> on the left to see your client grab your event.</li>
+				</ul>
+
+				<p>The client never pinged the server and asked for the event! The server pushed it down using a Web Socket!</p>
+
+				<p>You can also setup your own HTTP POST request to test this. Send a HTTP POST request to <code>http://pushman.dfl.mn/api/push</code> with some POST headers (as shown below) and watch as the Output Log picks it up.</p>
+				<p>Use the private key: <code>this_is_a_60_char_string_that_looks_like_a_valid_private_key</code>.</p>
+				<p><a href="/documentation">Check out the Documentation</a> on the fields required to push your own POST request.</p>
+			</div>
+		</div>
+
+		<div class="row bottom40">
+			<div class="col-lg-12">
+				<h5>Got cURL? Paste this into your Console</h5>
+				<pre><code class="bash">curl -X POST -F "private=this_is_a_60_char_string_that_looks_like_a_valid_private_key" -F "event=kittens_are_cute" http://pushman.dfl.mn/api/push</code></pre>
+			</div>
+		</div>
+
 	</div>
 
 </div>
