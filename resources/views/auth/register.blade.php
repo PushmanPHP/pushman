@@ -68,7 +68,7 @@
 
 								<div class="form-group">
 									<div class="col-sm-12">
-										<p class="text-left help-block">You should really consider building your own Pushman instance from our source code! <a href="http://github.com/Duffleman/pushman">Check it out here</a>. If you register online with our site we cannot guarentee 24 hour uptime and all connections are limited to {{ env('PUSHMAN_MAX',3) }} max connections.</p>
+										<p class="text-left help-block">You should really consider building your own Pushman instance from our source code! <a href="http://github.com/Duffleman/pushman">Check it out here</a>. If you register online with our site we cannot guarentee 24 hour uptime and all channels are limited to {{ env('PUSHMAN_MAX',3) }} max connections.</p>
 										<p class="text-left help-block">If you build your own instance, you can have unlimited everything!</p>
 									</div>
 								</div>
