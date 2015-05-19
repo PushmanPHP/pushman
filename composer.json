@@ -1,11 +1,18 @@
 {
     "name": "pushman/pushman",
+    "authors": [
+        {
+            "name": "George Miller",
+            "email": "github@duffleman.co.uk"
+        }
+    ],
     "description": "Pushman PHP Websocket Manager",
     "keywords": [
         "laravel",
         "pushman",
         "websocket"
     ],
+    "minimum-stability": "dev",
     "license": "MIT",
     "type": "project",
     "require": {
