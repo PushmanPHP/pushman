@@ -33,7 +33,13 @@ class APIController extends Controller {
             $channel = $request->channel;
         }
 
-        $event = (new PushEvent())->handle($request->private, $request->event, $channel, $request->payload);
+        if($request->private === 'this_is_a_60_char_string_that_looks_like_a_valid_private_key') {
+            $private = Site::where('name', 'demo')->where('url', 'http://pushman.dfl.mn')->first()->private;
+        } else {
+            $private = $request->private;
+        }
+
+        $event = (new PushEvent())->handle($private, $request->event, $channel, $request->payload);
 
         return response()->json($event);
     }

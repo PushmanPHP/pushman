@@ -1,6 +1,7 @@
 <?php namespace Pushman\Services;
 
 use Illuminate\Http\Request;
+use Pushman\Repositories\ChannelRepository;
 use Pushman\Site;
 
 class PushPrep {
@@ -36,5 +37,13 @@ class PushPrep {
         $channel = $site->getInternal();
 
         return $channel->public;
+    }
+
+    public function getDemo()
+    {
+        $site = Site::where('name', 'demo')->where('url', 'http://pushman.dfl.mn')->first();
+        if ($site) {
+            return ChannelRepository::getPublic($site)->public;
+        }
     }
 }

@@ -34,6 +34,7 @@ Route::group(['prefix' => 'auth'], function () {
 get('documentation', 'DocsController@index');
 get('about', 'WelcomeController@about');
 get('settings', 'WelcomeController@settings');
+get('demo', 'DemoController@index');
 
 post('api/push', 'APIController@push');
 get('api/channel', 'APIController@channel');
