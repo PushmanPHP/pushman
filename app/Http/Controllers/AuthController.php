@@ -124,7 +124,8 @@ class AuthController extends Controller {
                 $this->flash->success('Logged in!');
             }
         } else {
-            $this->flash->info('Your account has been created. You need to wait for a web master to activate it before logging in.');
+            #$this->flash->info('Your account has been created. You need to wait for a web master to activate it before logging in.');
+            $this->flash->success('Registered! Try logging in!');
         }
 
         return redirect('/');
