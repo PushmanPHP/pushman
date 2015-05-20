@@ -1,22 +1,31 @@
 <?php namespace Pushman\Services;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Pushman\Channel;
 use Pushman\Exceptions\InvalidPayloadException;
 use Pushman\Site;
 
 class PushEvent {
 
-    public function handle($private, $event, $channel = 'public', $payload = '', $logRequest = true)
+    public function handle($private, $event, $channels = [], $payload = '', $logRequest = true)
     {
         $site = Site::where('private', $private)->first();
         if ( !$site) {
             return ['status' => 'error', 'message' => 'Unable to link private key to site.'];
         }
 
-        $channel = Channel::where('name', $channel)->where('site_id', $site->id)->first();
-        if ( !$channel) {
-            return ['status' => 'error', 'message' => 'Channel does not exist.'];
+        if(is_null($channels)) {
+            $channels = ['public'];
+        }
+
+        $arrChannels = new Collection();
+        foreach ($channels as $strChannel) {
+            $channel = Channel::where('name', $strChannel)->where('site_id', $site->id)->first();
+            if ( !$channel) {
+                return ['status' => 'error', 'message' => 'Channel does not exist.'];
+            }
+            $arrChannels[] = $channel;
         }
 
         try {
@@ -28,11 +37,11 @@ class PushEvent {
         $payload = json_decode($payload, true);
 
         $pushmanPayload = [
-            'private' => $private,
-            'event'   => $event,
-            'channel' => $channel,
-            'payload' => $payload,
-            'log'     => $logRequest
+            'private'  => $private,
+            'event'    => $event,
+            'channels' => $arrChannels->toJson(),
+            'payload'  => $payload,
+            'log'      => $logRequest
         ];
         $pushmanPayload = json_encode($pushmanPayload);
 
@@ -42,7 +51,7 @@ class PushEvent {
 
             $internal = $site->getInternal();
             if ( !is_null($internal)) {
-                (new self())->handle($private, 'log', 'pushmaninternal', json_encode([
+                (new self())->handle($private, 'log', ['pushmaninternal'], json_encode([
                     'event'   => $event,
                     'payload' => json_encode($payload)
                 ]), false);
@@ -56,10 +65,10 @@ class PushEvent {
         $socket->send($pushmanPayload);
 
         return [
-            'status'    => 'success',
-            'message'   => 'Event pushed successfully.',
-            'event'     => $event,
-            'channel'   => $channel->name,
+            'status'   => 'success',
+            'message'  => 'Event pushed successfully.',
+            'event'    => $event,
+            'channels' => $arrChannels,
             'site'      => $site->name,
             'timestamp' => Carbon::now(),
             'payload'   => $payload

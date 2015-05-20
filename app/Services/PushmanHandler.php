@@ -64,8 +64,8 @@ class PushmanHandler implements WampServerInterface {
     function onError(ConnectionInterface $conn, \Exception $e)
     {
         qlog("ERROR: {$e->getMessage()}");
-        $trace = $e->getTrace();
-        var_dump($trace[0]);
+        // $trace = $e->getTrace();
+        // var_dump($trace[0]);
     }
 
     /**
@@ -125,35 +125,47 @@ class PushmanHandler implements WampServerInterface {
     {
         $event = json_decode($event, true);
 
-        $channel = $this->getChannel($event['channel']['id']);
+        $channels = $this->getChannels($event['channels']);
         $pureName = $event['event'];
         $payload = $event['payload'];
 
-        $name = TopicHandler::processEventName($pureName, $channel);
+        foreach ($channels as $channel) {
+            $name = TopicHandler::processEventName($pureName, $channel);
 
-        if ( !array_key_exists($name, $this->topics)) {
-            qlog("Event {$name} receieved. No one to push to.");
+            if ( !array_key_exists($name, $this->topics)) {
+                qlog("Event {$name} receieved. No one to push to.");
 
-            return;
-        }
-
-        $type = TopicHandler::getTopicType($pureName);
-        $topic = $this->topics[$name];
-
-        if ($channel->name === 'public') {
-            foreach ($topic->getIterator() as $connection) {
-                $connection->send(json_encode([WAMP::MSG_EVENT, $pureName, $payload]));
+                continue;
             }
-        } else {
-            $topic->broadcast($payload);
-        }
 
-        qlog("{$name} event pushed out.");
+            $topic = $this->topics[$name];
+
+            if ($channel->name === 'public') {
+                foreach ($topic->getIterator() as $connection) {
+                    $connection->send(json_encode([WAMP::MSG_EVENT, $pureName, $payload]));
+                }
+            } else {
+                $topic->broadcast($payload);
+            }
+
+            qlog("{$name} event pushed out.");
+        }
     }
 
     private function getChannel($id)
     {
         return Channel::find($id);
+    }
+
+    private function getChannels($channels)
+    {
+        $array = [];
+        $channels = json_decode($channels, true);
+        foreach ($channels as $channel) {
+            $array[] = Channel::find($channel['id']);
+        }
+
+        return $array;
     }
 
     private function checkTopicRequirements(ConnectionInterface $conn = null)

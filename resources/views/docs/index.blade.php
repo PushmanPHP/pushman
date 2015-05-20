@@ -47,10 +47,10 @@
 							<td>The event name, EG. "blog_post".</td>
 						</tr>
 						<tr>
-							<td>channel</td>
+							<td>channels</td>
 							<td><span class="label label-danger">no</span></td>
-							<td>Must be a valid channel name, defaults to 'public' if none given.</td>
-							<td>a name of a channel your site has.</td>
+							<td>Must be a valid JSON array of channel names to broadcast to.</td>
+							<td>a set of channel names your site has.</td>
 						</tr>
 						<tr>
 							<td>payload</td>
@@ -71,7 +71,7 @@ Content-Type: multipart/form-data;
 {
     "private": "gIcLWblryEvOqplqVpCwNmXZGPjzAYKyNAUtcuuzfNk...",
     "event": "kittens",
-    "channel": "auth",
+    "channels": ["auth"],
     "payload": {
         "foo" : "bar"
     }
@@ -84,10 +84,21 @@ Content-Type: multipart/form-data;
     "status": "success",
     "message": "Event pushed successfully.",
     "event": "kittens",
-    "channel": "auth",
-    "site": "dfl.mn",
+    "channels": [
+        {
+            "id": "8",
+            "name": "auth",
+            "public": "CpluouZMI9m1dejqvGzK",
+            "refreshes": "no",
+            "max_connections": "100",
+            "active_users": "0",
+            "events_fired": 17,
+            "created_at": "2015-05-18 16:55:41"
+        }
+    ],
+    "site": "dfl.m",
     "timestamp": {
-        "date": "2015-05-15 22:40:29.000000",
+        "date": "2015-05-20 01:38:43.000000",
         "timezone_type": 3,
         "timezone": "UTC"
     },

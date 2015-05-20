@@ -33,7 +33,7 @@
 						<div class="form-group">
 							{!! Form::label('max_connections', 'Max', ['class' => 'control-label col-sm-2']) !!}
 							<div class="col-sm-10">
-								{!! Form::input('number', 'max_connections', 100, ['class' => 'form-control']) !!}
+								{!! Form::input('number', 'max_connections', env('PUSHMAN_MAX', 3), ['class' => 'form-control']) !!}
 								{!! $errors->first('max_connections', '<p class="help-block">:message</p>') !!}
 								<p class="help-block"><small>Max Concurrent Connections</small></p>
 							</div>
