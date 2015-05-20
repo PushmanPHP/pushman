@@ -163,7 +163,7 @@
 
 // Holds the connections wer are listening to.
 // You don't need to do this, Pushman already handles clients trying to subscribe twice.
-var listening = [];
+var listening = ['restart_warning'];
 // Holds our connection variable in the global scope.
 var conn;
 
@@ -258,6 +258,9 @@ function connect() {
 	conn = new ab.Session('ws://{{ PushPrep::getHost() }}:{{ PushPrep::getPort() }}?token={{ PushPrep::getDemo() }}',
 		function() {
 			divLog('Connected to Pushman via Web Socket.');
+			conn.subscribe('restart_warning', function(topic, data) {
+				warnUserAboutRestart();
+			});
 		},
 		function() {
 			divLog('Disconnected from Pushman!');
@@ -296,6 +299,24 @@ function checkConnection()
 		div.html('Disconnected');
 		return false;
 	}
+}
+
+// This function just warns about restarts.
+// Better let people know when it intentionally restarts
+// dont want people thinking its unreliable!
+// 
+// Would be way cooler if this was a normal warn() method that took arguments in though.
+function warnUserAboutRestart()
+{
+	swal({
+		title: 'Restarting',
+		text: "Pushman is about to restart to update itself. Don't be alarmed, give it a few seconds and try to reconnect.",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonClass: 'btn-warning',
+		confirmButtonText: "Okay",
+		closeOnConfirm: false
+	});
 }
 
 
