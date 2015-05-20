@@ -10,6 +10,7 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.2
 * Push InternalLog out on PushmanInternal Channel.
+* &lt;script&gt; tags in Payloads are excuted. Fix this <--
 * OSX fonts look odd. Maybe its the modular-scale thing?
 * Look into why div.cover does not work on mobile devices.
 * Write tests :/ Integrate with travis-ci
@@ -49,11 +50,15 @@ $ sudo make install
 [PHP Extension Download](http://zeromq.org/bindings:php#toc3)
 
 #### Port Requirements
-Pushman requires port `5555` but you do _not_ need to write a firewall rule for it, but ensure that nothing else is stealing that port.
+Pushman requires two ports to function, an `INTERNAL` and a `PUBLIC` port, the public port handles websocket connections and the other handles incoming API requests.
 
-Pushman runs publically on port `8080`, you can change it in the source though. You _need_ to setup a firewall rule to allow access to port `8080`.
+By default both of these ports are configurable in the `.env` file in the root directory or by setting an environment variable. You only need to setup a firewall rule for the `PUBLIC` port, but do ensure both ports are free to bind to.
 
-You can run Pushman on any two ports which can be configured via the `.env` file at the root directory.
+.env file:
+```
+PUSHMAN_PORT=8080
+PUSHMAN_INTERNAL=5555
+```
 
 #### Installing the Code
 On forge, you can just build a new site, and give the it the Github repo to install itself. `Duffleman/pushman` on the _master_ branch is what you need to enter.
@@ -61,7 +66,6 @@ On forge, you can just build a new site, and give the it the Github repo to inst
 On a regular server, git clone the directory and run `composer install --no-dev` to install the requirements.
 
 #### Configuration
-
 Pushman requires a database, so for both Forge and a regular server, enter your Database editor of choice, or sqlite, and build a database and enter the details in the `.env` file in the root web directory.
 
 Once the database configuration is set, you can run `php artisan migrate` followed by `php artisan key:generate` to publish the database layout. Or on Forge, just redeploy the site.
@@ -69,17 +73,13 @@ Once the database configuration is set, you can run `php artisan migrate` follow
 **You MUST set an App Key.**
 
 #### Runtime
-
 Pushman itself can then be run by using `php artisan pushman:run`. I highly recommend setting up a supervisord task for this or in Forge, go into your server tab and enter the full path to artisan and Forge will auto monitor the task for you.
 
 ###### Example Command
-
 `php /home/forge/pushman.dfl.mn/artisan pushman:run`
 
 ## Security Vulnerabilities
-
 If you discover a security vulnerability within Pushman, please send an e-mail to George Miller at george@duffleman.co.uk. All security vulnerabilities will be promptly addressed.
 
 ## License
-
 Pushman is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
