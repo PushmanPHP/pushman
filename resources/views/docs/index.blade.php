@@ -351,7 +351,7 @@ Cache-Control: no-cache
 			<div class="col-lg-12">
 				<h3>Extending Laravel</h3>
 				<p>The <a href="http://github.com/Duffleman/pushman_php">Pushman PHP Library</a> has a ServiceProvider to extend Laravel 5.1.</p>
-				<p>Visit the documentation on the GitHub repo, but the idea is simple, require the project with composer and state the <code>Pushman\PHPLib\PushmanServiceProvider</code> in your <code>app/config.php</code> file.</p>
+				<p>Visit the documentation on the GitHub repo, but the idea is simple, require the project with composer and state the <code>Pushman\PHPLib\PushmanServiceProvider</code> in your <code>config/app.php</code> file.</p>
 				<p>Any event you call that implements <code>ShouldBroadcast</code> will be pushed to Pushman for you!</p>
 			</div>
 		</div>
