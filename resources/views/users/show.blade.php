@@ -40,7 +40,7 @@
 				<tbody>
 					@forelse($user->sites as $site)
 						<tr>
-							<td>{{$site->name}}</td>
+							<td><a href="/sites/{{$site->id}}">{{$site->name}}</a></td>
 							<td>{{$site->url}}</td>
 						</tr>
 					@empty

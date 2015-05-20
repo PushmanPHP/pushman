@@ -85,6 +85,9 @@ class AuthController extends Controller {
 
             return redirect()->intended('/dashboard');
         }
+
+        $this->flash->error('Unable to load user details.');
+        return redirect()->back();
     }
 
     /**
@@ -128,7 +131,7 @@ class AuthController extends Controller {
             $this->flash->success('Registered! Try logging in!');
         }
 
-        return redirect('/');
+        return redirect('/auth/login');
     }
 
     /**

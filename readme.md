@@ -12,7 +12,6 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 * Push InternalLog out on PushmanInternal Channel.
 * &lt;script&gt; tags in Payloads are excuted. Fix this <--
 * OSX fonts look odd. Maybe its the modular-scale thing?
-* Look into why div.cover does not work on mobile devices.
 * Write tests :/ Integrate with travis-ci
 * Integrate with StyleCI
 

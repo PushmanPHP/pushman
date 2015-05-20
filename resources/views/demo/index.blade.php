@@ -6,10 +6,10 @@
 <!-- Scroll down to the Javascript at the bottom of the page if you want to see how this works! -->
 <!-- ****************************************************************************************** -->
 
-<div class="cover-about bottom40">
+<div class="background bottom40">
 		<div class="container">
 
-			<h2 class="bottom40">Demo</h2>
+			<h1 class="bottom40">Demo</h1>
 
 			<div class="bottom20">
 				<h6>Check out the source of this page!</h6>

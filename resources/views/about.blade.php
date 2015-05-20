@@ -2,10 +2,10 @@
 
 @section('container')
 
-	<div class="cover-about bottom40">
+	<div class="background bottom40">
 		<div class="container">
 
-			<h2 class="bottom40">About Pushman</h2>
+			<h1 class="bottom40">About Pushman</h1>
 
 			<div class="bottom20">
 				<h4>Pushman uses Web Sockets so you don't have to.</h4>

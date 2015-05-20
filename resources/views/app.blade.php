@@ -20,12 +20,9 @@
 
 		@include('_navigation')
 		
-		@if(!isset($className))
-			@include('vendor.flash.message', ['cover' => false])
-		@endif
-		
 		@section('container')
 			<div class="container">
+				@include('vendor.flash.message')
 				@yield('content')
 			</div>
 		@show

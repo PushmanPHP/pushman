@@ -2,10 +2,10 @@
 
 @section('container')
 
-	<div class="cover-about bottom40">
+	<div class="background bottom40">
 		<div class="container">
 
-			<h2 class="bottom40">Documentation</h2>
+			<h1 class="bottom40">Documentation</h1>
 
 		</div>
 	</div>
