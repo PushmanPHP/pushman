@@ -9,13 +9,14 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.2
+* Push InternalLog out on PushmanInternal Channel.
 * OSX fonts look odd. Maybe its the modular-scale thing?
 * Look into why div.cover does not work on mobile devices.
 * Write tests :/ Integrate with travis-ci
 * Integrate with StyleCI
 
 ## Official Documentation
-Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/docs).
+Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/documentation).
 
 Documentation for building your own Pushman instance is found below.
 
