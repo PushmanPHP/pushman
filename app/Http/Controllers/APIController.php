@@ -119,7 +119,7 @@ class APIController extends Controller {
     private function getChannels($channels)
     {
         if ( !$this->isJson($channels)) {
-            throw new InvalidRequestException('Channels to broadcast to must be a JSON string.');
+            return [$channels];
         }
 
         return json_decode($channels, true);

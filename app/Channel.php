@@ -10,7 +10,7 @@ class Channel extends Model implements Ownable {
      *
      * @var array
      */
-    protected $hidden = ['site_id', 'updated_at'];
+    protected $hidden = ['site_id', 'updated_at', 'subscribers'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -25,7 +25,7 @@ class Channel extends Model implements Ownable {
      */
     public function subscribers()
     {
-        return $this->belongsToMany('Pushman\Client');
+        return $this->belongsToMany('Pushman\Client')->withPivot('event');
     }
 
     /**

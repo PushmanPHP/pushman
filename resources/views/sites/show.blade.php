@@ -164,12 +164,12 @@ $(document).ready(function() {
 		var event_count = event_count_dom.html();
 	    event_count = parseInt(event_count);
 
-		var channel = $('#channel').val();
+		var channels = $('#channel').val();
 		var event = $('#event').val();
 		var payload = $('#payload').val();
 		var private_key = '{{$site->private}}';
 
-		$.post('/api/push', { channel: channel, event: event, payload: payload, private: private_key}, function(data) {
+		$.post('/api/push', { channels: channels, event: event, payload: payload, private: private_key}, function(data) {
 			var str = JSON.stringify(data, null, 2);
 			$('#response').html(str);
 			hljs.highlightBlock(document.getElementById('response'));
