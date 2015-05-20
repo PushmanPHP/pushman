@@ -227,7 +227,7 @@ $(document).ready(function() {
 			if(checkConnection() == true) {
 				conn.subscribe(event_name, function(topic, data) {
 					// This is what happens when we catch the event!
-					divLog("Caught Event! "+event_name+" was caught with " + JSON.stringify(data));
+					divLog("Caught Event! "+event_name+" was caught with " + JSON.stringify(str_replace("<script>", "", data));
 				});
 				divLog('Started listening to ' + event_name);
 			} else {
