@@ -10,9 +10,23 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container meaty_font">
 
 		<div class="row">
+			<div class="col-lg-6">
+				<h6>Table of Contents</h6>
+				<div class="well">
+					<ul>
+						<li><a href="#apiEndpoints">API Endpoints</a></li>
+						<li><a href="#siteUsage">Using the Site</a></li>
+						<li><a href="#exampleClient">Example Client (Javascript)</a></li>
+						<li><a href="#laravel">Laravel Extenders</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="apiEndpoints">
 			<div class="col-lg-12">
 				<h2>API Endpoints</h2>
 			</div>
@@ -250,11 +264,11 @@ Cache-Control: no-cache
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" id="siteUsage">
 			<div class="col-lg-12">
 				<h3>Site Usage</h3>
 
-				<div class="about_font">
+				<div>
 					<p>Pushman runs on multiple sites so from your dashboard you need to first build a new site.</p>
 
 					<h4>Sites</h4>
@@ -285,7 +299,7 @@ Cache-Control: no-cache
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" id="exampleClient">
 			<div class="col-lg-12">
 				<h3>Javascript Setup</h3>
 
@@ -324,6 +338,21 @@ Cache-Control: no-cache
     {\'skipSubprotocolCheck\': true}
 );')); ?>
 </code></pre>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<hr>
+			</div>
+		</div>
+
+		<div class="row bottom40" id="laravel">
+			<div class="col-lg-12">
+				<h3>Extending Laravel</h3>
+				<p>The <a href="http://github.com/Duffleman/pushman_php">Pushman PHP Library</a> has a ServiceProvider to extend Laravel 5.1.</p>
+				<p>Visit the documentation on the GitHub repo, but the idea is simple, require the project with composer and state the <code>Pushman\PHPLib\PushmanServiceProvider</code> in your <code>app/config.php</code> file.</p>
+				<p>Any event you call that implements <code>ShouldBroadcast</code> will be pushed to Pushman for you!</p>
 			</div>
 		</div>
 	</div>
