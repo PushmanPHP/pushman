@@ -96,4 +96,14 @@ class Channel extends Model implements Ownable {
     {
         return $this->site->ownedBy($user);
     }
+
+    /**
+     * Returns the true active_user count.
+     *
+     * @return mixed
+     */
+    public function getActiveUsersAttribute()
+    {
+        return $this->current_users();
+    }
 }
