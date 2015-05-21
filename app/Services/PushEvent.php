@@ -8,6 +8,17 @@ use Pushman\Site;
 
 class PushEvent {
 
+    /**
+     * Handles an incoming event from any source
+     * Pushes it out to the PushmanHandler via ZeroMQ
+     *
+     * @param        $private
+     * @param        $event
+     * @param array  $channels
+     * @param string $payload
+     * @param bool   $logRequest
+     * @return array
+     */
     public function handle($private, $event, $channels = [], $payload = '', $logRequest = true)
     {
         $site = Site::where('private', $private)->first();
@@ -31,7 +42,7 @@ class PushEvent {
         try {
             $payload = $this->validatePayload($payload);
         } catch (InvalidPayloadException $ex) {
-            return ['status' => 'error', 'message' => 'This payload is not JSON!'];
+            return ['status' => 'error', 'message' => 'This payload is not valid JSON!'];
         }
 
         $payload = json_decode($payload, true);
@@ -67,6 +78,16 @@ class PushEvent {
         ];
     }
 
+    /**
+     * Validates a payload.
+     * Makes sure its all UTF-8 characters
+     * Makes sure there are no odd html characters.
+     * Stops <script> tags.
+     *
+     * @param $payload
+     * @return mixed|string
+     * @throws \Pushman\Exceptions\InvalidPayloadException
+     */
     private function validatePayload($payload)
     {
         if (empty($payload)) {
@@ -86,17 +107,42 @@ class PushEvent {
         }
         $payload = implode('', $characterArray);
 
-        if ( !$this->isJson($payload)) {
+        if ( !$this->isJson($payload) OR $this->containsScripts($payload)) {
             throw new InvalidPayloadException('Bad JSON');
         }
 
         return $payload;
     }
 
+    /**
+     * Detects if a string is JSON.
+     *
+     * @param $string
+     * @return bool
+     */
     private function isJson($string)
     {
         json_decode($string);
 
         return (json_last_error() == JSON_ERROR_NONE);
+    }
+
+    /**
+     * Literally checks for <script>.
+     *
+     * @param $payload
+     * @return bool
+     */
+    private function containsScripts($payload)
+    {
+        if (str_contains($payload, "<script>")) {
+            return true;
+        }
+
+        if (str_contains($payload, 'javascript:')) {
+            return true;
+        }
+
+        return false;
     }
 }
