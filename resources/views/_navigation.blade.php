@@ -11,21 +11,21 @@
 
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="/">{{ Lang::get('navigation.home'); }}</a></li>
+				<li><a href="/">{{ Lang::get('navigation.home') }}</a></li>
 				@if(Auth::check() AND user()->isAdmin())
-					<li><a href="/users">{{ Lang::get('navigation.users'); }}</a></li>
+					<li><a href="/users">{{ Lang::get('navigation.users') }}</a></li>
 				@endif
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				@if(!Auth::check())
-					<li><a href="/auth/login">{{ Lang::get('navigation.login'); }}</a></li>
+					<li><a href="/auth/login">{{ Lang::get('navigation.login') }}</a></li>
 				@else
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::get('navigation.account'); }} <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Lang::get('navigation.account') }} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="/settings">{{ Lang::get('navigation.settings'); }}</a></li>
+							<li><a href="/settings">{{ Lang::get('navigation.settings') }}</a></li>
 							<li class="divider"></li>
-							<li><a href="/auth/logout">{{ Lang::get('navigation.logout'); }}</a></li>
+							<li><a href="/auth/logout">{{ Lang::get('navigation.logout') }}</a></li>
 						</ul>
 					</li>
 				@endif
