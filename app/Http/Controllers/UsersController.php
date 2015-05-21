@@ -7,9 +7,19 @@ use Pushman\User;
 
 class UsersController extends Controller {
 
+    /**
+     * @var \Illuminate\Contracts\Auth\Guard
+     */
     protected $guard;
+    /**
+     * @var \Laracasts\Flash\FlashNotifier
+     */
     private $flash;
 
+    /**
+     * @param \Illuminate\Contracts\Auth\Guard $guard
+     * @param \Laracasts\Flash\FlashNotifier   $flash
+     */
     public function __construct(Guard $guard, FlashNotifier $flash)
     {
         $this->middleware('auth');
@@ -18,6 +28,11 @@ class UsersController extends Controller {
         $this->flash = $flash;
     }
 
+    /**
+     * Show a list of users.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $users = User::all();
@@ -25,11 +40,23 @@ class UsersController extends Controller {
         return view('users.index', compact('users'));
     }
 
+    /**
+     * Show a single user
+     *
+     * @param \Pushman\User $user
+     * @return \Illuminate\View\View
+     */
     public function show(User $user)
     {
         return view('users.show', compact('user'));
     }
 
+    /**
+     * Promote a user from Waiting to Active.
+     *
+     * @param \Pushman\User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function promote(User $user)
     {
         if ($user->isAdmin()) {
@@ -46,6 +73,12 @@ class UsersController extends Controller {
         return redirect()->back();
     }
 
+    /**
+     * Ban a user.
+     *
+     * @param \Pushman\User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function ban(User $user)
     {
         if ($user->isAdmin()) {

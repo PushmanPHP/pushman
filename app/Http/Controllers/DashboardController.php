@@ -23,7 +23,9 @@ class DashboardController extends Controller {
     }
 
     /**
-     * Present the dashboard
+     * Show the dashboard.
+     *
+     * @return \Illuminate\View\View
      */
     public function dashboard()
     {

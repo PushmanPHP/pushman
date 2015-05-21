@@ -1,7 +1,6 @@
 <?php
 
-get('/', 'WelcomeController@index');
-
+get('/', 'DashboardController@dashboard');
 get('dashboard', 'DashboardController@dashboard');
 
 resource('sites', 'SiteController', ['only' => ['create', 'store', 'show', 'destroy']]);
@@ -31,10 +30,7 @@ Route::group(['prefix' => 'auth'], function () {
     get('logout', 'AuthController@getLogout');
 });
 
-get('documentation', 'DocsController@index');
-get('about', 'WelcomeController@about');
 get('settings', 'WelcomeController@settings');
-get('demo', 'DemoController@index');
 
 post('api/push', 'APIController@push');
 get('api/channel', 'APIController@channel');

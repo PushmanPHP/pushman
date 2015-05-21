@@ -12,11 +12,6 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/documentation">Documentation</a></li>
-				@if(Auth::guest())
-					<li><a href="/demo">Demo</a></li>
-				@endif
 				@if(Auth::check() AND user()->isAdmin())
 					<li><a href="/users">Users</a></li>
 				@endif

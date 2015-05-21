@@ -10,6 +10,12 @@ use Validator;
 
 class APIController extends Controller {
 
+    /**
+     * Handles in the incoming push request for Pushman.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function push(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -48,6 +54,12 @@ class APIController extends Controller {
         return response()->json($event);
     }
 
+    /**
+     * returns information on a single channel.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
+     */
     public function channel(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -90,6 +102,12 @@ class APIController extends Controller {
         return $channel;
     }
 
+    /**
+     * Returns a full list of channels associated with a site.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function channels(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -116,6 +134,12 @@ class APIController extends Controller {
         return $site->channels;
     }
 
+    /**
+     * Decodes a JSON array of channels.
+     *
+     * @param $channels
+     * @return array|mixed
+     */
     private function getChannels($channels)
     {
         if ( !$this->isJson($channels)) {
@@ -125,6 +149,12 @@ class APIController extends Controller {
         return json_decode($channels, true);
     }
 
+    /**
+     * Detects if a string is JSON.
+     *
+     * @param $string
+     * @return bool
+     */
     private function isJson($string)
     {
         json_decode($string);

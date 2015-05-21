@@ -7,29 +7,14 @@ class WelcomeController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('guest', ['only' => 'index']);
-        $this->middleware('auth', ['only' => 'settings']);
+        $this->middleware('auth');
     }
 
     /**
-     * Show the application welcome screen to the user.
+     * Return the settings page.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function index()
-    {
-        $className = 'nav-home';
-
-        return view('welcome', compact('className'));
-    }
-
-    public function about()
-    {
-        $className = 'nav-home';
-
-        return view('about', compact('className'));
-    }
-
     public function settings()
     {
         return view('settings.index');
