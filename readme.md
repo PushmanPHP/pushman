@@ -11,6 +11,10 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 ## Todo for Version 2.2
 * Write tests for PHPLib and Pushman :) Integrate with travis-ci
 * Integrate with StyleCI
+* Show list of IP addresses who are currently connected in /sites/{site}/channels/{channel}/subscribers?
+
+## Todo for Version 2.3
+* Localization Support
 
 ## Todo for Version 3
 * Build Pushman Lite as a Laravel Package to include in sites.
