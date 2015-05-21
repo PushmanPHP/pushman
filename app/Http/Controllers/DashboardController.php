@@ -19,6 +19,7 @@ class DashboardController extends Controller {
     public function __construct(Guard $guard)
     {
         $this->guard = $guard;
+        $this->middleware('auth');
     }
 
     /**
