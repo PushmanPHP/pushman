@@ -9,6 +9,9 @@
 		<!-- Bootstrap CSS -->
 		<link href="/css/all.css" rel="stylesheet">
 
+		<!-- Open Sans -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
