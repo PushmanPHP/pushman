@@ -215,6 +215,8 @@ $(document).ready(function() {
 		event.preventDefault();
 		// Grab Form data
 		var event_name = $('#listen_event_name').val();
+		// Clear the event field.
+		$('#listen_event_name').val('');
 
 		// Are they already listening to the event?
 		// If so, let's not bother Pushman, just tell them.
@@ -222,7 +224,6 @@ $(document).ready(function() {
 			divLog('You are already listening to that event.');
 			return false;
 		} else {
-			listening.push(event_name);
 			// Assuming they are connected, lets subscribe to the event on the public channel.
 			if(checkConnection() == true) {
 				conn.subscribe(event_name, function(topic, data) {
@@ -230,6 +231,7 @@ $(document).ready(function() {
 					divLog("Caught Event! "+event_name+" was caught with " + JSON.stringify(data));
 				});
 				divLog('Started listening to ' + event_name);
+				listening.push(event_name);
 			} else {
 				divLog("Unable to listen to event. Connect to Web Socket first!");
 			}
