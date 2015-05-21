@@ -56,7 +56,7 @@
 					<ul class="nav">
 						<li><a href="https://twitter.com/kfwls">Kaelan Fouwels</a></li>
 						<li><a href="https://twitter.com/0xdeafcafe">Alex Reed</a></li>
-						<li><a href="https://laravel-news.com/">Laravel News</a></li>
+						<li><a href="https://laravel.com/">Laravel</a></li>
 					</ul>
 				</small></p>
 			</div>
