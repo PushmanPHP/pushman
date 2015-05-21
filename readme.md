@@ -9,11 +9,18 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.2
-* Push InternalLog out on PushmanInternal Channel. // later
-* &lt;script&gt; tags in Payloads are excuted. // later - this is actually useful
-* OSX fonts look odd. Maybe its the modular-scale thing? // apparently fixed, not tested though.
-* Write tests :/ Integrate with travis-ci
+* Move to an organisation
+* Seperate site logic from Pushman Logic
+* Write tests for PHPLib and Pushman :) Integrate with travis-ci
 * Integrate with StyleCI
+
+## Todo for Version 3
+* Build Pushman Lite as a Laravel Package to include in sites.
+
+### Long term todo list
+* Push console logs out on PushmanInternal Channel. // later
+* &lt;script&gt; tags in Payloads are excuted. // later - this is actually useful
+* Have the Pushman Lite package be its own binary independant of Laravel.
 
 ## Official Documentation
 Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/documentation).
