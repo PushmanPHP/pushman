@@ -9,8 +9,6 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.2
-* Move to an organisation
-* Seperate site logic from Pushman Logic
 * Write tests for PHPLib and Pushman :) Integrate with travis-ci
 * Integrate with StyleCI
 
