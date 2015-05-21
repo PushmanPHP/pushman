@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use Pushman\InternalLog;
 
 function qlog($log, $shouldLog = true)

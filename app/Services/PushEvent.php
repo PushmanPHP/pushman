@@ -15,7 +15,7 @@ class PushEvent {
             return ['status' => 'error', 'message' => 'Unable to link private key to site.'];
         }
 
-        if(is_null($channels)) {
+        if (is_null($channels)) {
             $channels = ['public'];
         }
 
@@ -48,14 +48,6 @@ class PushEvent {
         if ($logRequest) {
             $channel->events_fired += 1;
             $channel->save();
-
-            $internal = $site->getInternal();
-            if ( !is_null($internal)) {
-                (new self())->handle($private, 'log', ['pushmaninternal'], json_encode([
-                    'event'   => $event,
-                    'payload' => json_encode($payload)
-                ]), false);
-            }
         }
 
         $port = env('PUSHMAN_INTERNAL', 5555);
@@ -65,10 +57,10 @@ class PushEvent {
         $socket->send($pushmanPayload);
 
         return [
-            'status'   => 'success',
-            'message'  => 'Event pushed successfully.',
-            'event'    => $event,
-            'channels' => $arrChannels,
+            'status'    => 'success',
+            'message'   => 'Event pushed successfully.',
+            'event'     => $event,
+            'channels'  => $arrChannels,
             'site'      => $site->name,
             'timestamp' => Carbon::now(),
             'payload'   => $payload

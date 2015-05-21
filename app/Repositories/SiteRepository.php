@@ -34,4 +34,11 @@ class SiteRepository {
 
         return $existing_count >= 1;
     }
+
+    public static function getInternal()
+    {
+        return Site::where('name', 'internal')
+            ->where('url', 'http://internal')
+            ->first();
+    }
 }

@@ -9,9 +9,9 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.2
-* Push InternalLog out on PushmanInternal Channel.
-* &lt;script&gt; tags in Payloads are excuted. Fix this <--
-* OSX fonts look odd. Maybe its the modular-scale thing?
+* Push InternalLog out on PushmanInternal Channel. // later
+* &lt;script&gt; tags in Payloads are excuted. // later - this is actually useful
+* OSX fonts look odd. Maybe its the modular-scale thing? // apparently fixed, not tested though.
 * Write tests :/ Integrate with travis-ci
 * Integrate with StyleCI
 
