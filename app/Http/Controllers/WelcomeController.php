@@ -10,13 +10,4 @@ class WelcomeController extends Controller {
         $this->middleware('auth');
     }
 
-    /**
-     * Return the settings page.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function settings()
-    {
-        return view('settings.index');
-    }
 }

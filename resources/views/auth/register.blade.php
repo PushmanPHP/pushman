@@ -52,7 +52,7 @@
 							<!-- override Field -->
 							<div class="form-group">
 								<div class="col-sm-12">
-									{!! Form::text('override', null, ['class' => 'form-control', 'placeholder' => \Lang::get('common.passwordconfirmation')]) !!}
+									{!! Form::text('override', null, ['class' => 'form-control', 'placeholder' => \Lang::get('common.override')]) !!}
 									{!! $errors->first('override', '<p class="help-block">:message</p>') !!}
 								</div>
 							</div>

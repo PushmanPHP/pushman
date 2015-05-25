@@ -1,7 +1,7 @@
 <?php
 /**
- * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.31 on 2015-05-16.
+ * A helper file for Laravel 5, to provide autocomplete information to your IDE
+ * Generated for Laravel 5.0.31 on 2015-05-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1433,7 +1433,7 @@ namespace {
         }
         
         /**
-         * Return the currently cached user of the application.
+         * Return the currently cached user.
          *
          * @return \Pushman\User|null 
          * @static 
@@ -1443,7 +1443,7 @@ namespace {
         }
         
         /**
-         * Set the current user of the application.
+         * Set the current user.
          *
          * @param \Illuminate\Contracts\Auth\Authenticatable $user
          * @return void 
@@ -1809,7 +1809,7 @@ namespace {
         }
         
         /**
-         * Register command to handler mappings.
+         * Register command-to-handler mappings.
          *
          * @param array $commands
          * @return void 
@@ -1844,7 +1844,7 @@ namespace {
         }
         
         /**
-         * Set the pipes commands should be piped through before dispatching.
+         * Set the pipes through which commands should be piped before dispatching.
          *
          * @param array $pipes
          * @return $this 
@@ -7477,6 +7477,7 @@ namespace {
          * @param mixed $data
          * @param string $queue
          * @return mixed 
+         * @throws \Exception
          * @static 
          */
         public static function push($job, $data = '', $queue = null){
@@ -12244,6 +12245,56 @@ namespace {
          */
         public static function hasMacro($name){
             return \Illuminate\Html\HtmlBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class PushPrep extends \Pushman\Facades\PushPrep{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getHost(){
+            return \Pushman\Services\PushPrep::getHost();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getPort(){
+            return \Pushman\Services\PushPrep::getPort();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function usesInternal($site){
+            return \Pushman\Services\PushPrep::usesInternal($site);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function internalToken($site){
+            return \Pushman\Services\PushPrep::internalToken($site);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getDemo(){
+            return \Pushman\Services\PushPrep::getDemo();
         }
         
     }

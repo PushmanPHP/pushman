@@ -5,7 +5,7 @@ use Pushman\Site;
 
 class SiteRepository {
 
-    public static function buildSite($name, $url)
+    public static function buildSite($name, $url, $userid)
     {
         $url = rtrim($url, '/');
         $existing = self::siteExists($url);
@@ -18,7 +18,7 @@ class SiteRepository {
         $site->fill([
             'name'    => $name,
             'url'     => $url,
-            'user_id' => user()->id
+            'user_id' => $userid,
         ]);
         $site->generateToken();
         $site->save();

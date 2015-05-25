@@ -19,9 +19,9 @@ namespace Pushman{
  * @property string $refreshes 
  * @property integer $max_connections 
  * @property integer $active_users 
+ * @property integer $events_fired 
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
- * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Log[] $logs 
  * @property-read \Pushman\Site $site 
  * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Client[] $subscribers 
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereId($value)
@@ -31,6 +31,7 @@ namespace Pushman{
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereRefreshes($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereMaxConnections($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereActiveUsers($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereEventsFired($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Channel whereUpdatedAt($value)
  */
@@ -77,30 +78,6 @@ namespace Pushman{
 
 namespace Pushman{
 /**
- * Pushman\Log
- *
- * @property integer $id 
- * @property integer $site_id 
- * @property integer $channel_id 
- * @property string $event_name 
- * @property string $payload 
- * @property \Carbon\Carbon $created_at 
- * @property \Carbon\Carbon $updated_at 
- * @property-read \Pushman\Channel $channel 
- * @property-read \Pushman\Site $site 
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log whereSiteId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log whereChannelId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log whereEventName($value)
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log wherePayload($value)
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Pushman\Log whereUpdatedAt($value)
- */
-	class Log {}
-}
-
-namespace Pushman{
-/**
  * Pushman\Site
  *
  * @property integer $id 
@@ -112,7 +89,6 @@ namespace Pushman{
  * @property \Carbon\Carbon $updated_at 
  * @property-read \Pushman\User $user 
  * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Channel[] $channels 
- * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Log[] $logs 
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Site whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Site whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Site whereName($value)

@@ -16,7 +16,8 @@ class Kernel extends HttpKernel {
         'Illuminate\Session\Middleware\StartSession',
         'Illuminate\View\Middleware\ShareErrorsFromSession',
         'Pushman\Http\Middleware\VerifyCsrfToken',
-        'Pushman\Http\Middleware\AllowCrossDomainRequest'
+        'Pushman\Http\Middleware\AllowCrossDomainRequest',
+        'Pushman\Http\Middleware\SetLocale'
     ];
 
     /**

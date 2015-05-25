@@ -30,7 +30,8 @@ Route::group(['prefix' => 'auth'], function () {
     get('logout', 'AuthController@getLogout');
 });
 
-get('settings', 'WelcomeController@settings');
+get('settings', 'SettingsController@index');
+post('settings', 'SettingsController@store');
 
 post('api/push', 'APIController@push');
 get('api/channel', 'APIController@channel');

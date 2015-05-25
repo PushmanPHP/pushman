@@ -9,20 +9,22 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.2
-* Write tests for PHPLib and Pushman :) Integrate with travis-ci
-* Integrate with StyleCI
 * Show list of IP addresses who are currently connected in /sites/{site}/channels/{channel}/subscribers?
 
 ## Todo for Version 2.3
 * Localization Support
+* Support to force disconnecting clients from /subscribers *(there are some people on the demo who have been connected for over 5 days?)*
 
 ## Todo for Version 3
-* Build Pushman Lite as a Laravel Package to include in sites.
+*I'm really sorry I pushed test writing back to V3, it is a top priority but I need to refactor loads of code I wrote hastily to ensure PHPSpec can work. Watch for code refactors marked "preperation for testing" in the future*
+
+* Write tests for PHPLib and Pushman :) Integrate with travis-ci
+* Integrate with StyleCI
+* Build Pushman Lite as an independant Package to include in sites.
 
 ### Long term todo list
 * Push console logs out on PushmanInternal Channel. // later
-* &lt;script&gt; tags in Payloads are excuted. // later - this is actually useful
-* Have the Pushman Lite package be its own binary independant of Laravel.
+* &lt;script&gt; tags in Payloads are excuted. // fixed but needs more
 
 ## Official Documentation
 Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/documentation).

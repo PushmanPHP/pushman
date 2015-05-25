@@ -8,5 +8,5 @@ return [
     'register' => 'Register',
     'rememberme' => 'Remember Me',
     'email' => 'Email',
-    'override' => 'override key - leave this empty',
+    'override' => 'Override key - leave this empty',
 ];

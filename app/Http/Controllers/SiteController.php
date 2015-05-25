@@ -32,7 +32,7 @@ class SiteController extends Controller {
      */
     public function store(CreateSiteRequest $request)
     {
-        SiteRepository::buildSite($request->name, $request->url);
+        SiteRepository::buildSite($request->name, $request->url, user()->id);
 
         flash()->success('Site has been built.');
 
