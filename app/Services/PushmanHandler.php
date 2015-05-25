@@ -125,6 +125,12 @@ class PushmanHandler implements WampServerInterface {
     {
         $event = json_decode($event, true);
 
+        if ($this->isInternalEvent($event)) {
+            $this->handleInternal($event);
+
+            return;
+        }
+
         $channels = $this->getChannels($event['channels']);
         $pureName = $event['event'];
         $payload = $event['payload'];
@@ -179,5 +185,24 @@ class PushmanHandler implements WampServerInterface {
                 unset($this->topics[$name]);
             }
         }
+    }
+
+    private function isInternalEvent($event)
+    {
+        if (starts_with($event['event'], 'pushman_internal_event')) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function handleInternal($event)
+    {
+        if ($event['event'] === 'pushman_internal_event_client_force_disconnect') {
+            $this->clients->forceDisconnect($event['resource_id']);
+            qlog('Forced ' . $event['resource_id'] . ' to disconnect.');
+        }
+
+        return true;
     }
 }

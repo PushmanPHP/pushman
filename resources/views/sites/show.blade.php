@@ -69,16 +69,19 @@
 
 	<div class="row">
 		<div class="col-lg-3">
+			<a href="/sites/{{$site->id}}/subscribers" class="btn btn-success btn-block">Subscribers</a>
+		</div>
+		<div class="col-lg-3">
 			<a href="/sites/{{$site->id}}/channels" class="btn btn-primary btn-block">Channel Management</a>
 		</div>
 		<div class="col-lg-3">
 			<a href="#" id="btnRevealKeys" class="btn btn-info btn-block">Reveal Keys</a>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-2">
 			<a href="/sites/{{$site->id}}/regenerate" class="btn btn-warning btn-block swal">Regenerate Token</a>
 		</div>
-		<div class="col-lg-3">
-			<a href="/sites/{{$site->id}}/delete" class="btn btn-danger btn-block swal">Delete Site</a>
+		<div class="col-lg-1">
+			<a href="/sites/{{$site->id}}/delete" class="btn btn-danger btn-block swal">Delete</a>
 		</div>
 	</div>
 

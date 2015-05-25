@@ -158,4 +158,10 @@ class ClientRepository {
             return $channel->name . '(' . $channel->public . ')|' . $event;
         }
     }
+
+    public function forceDisconnect($resourceID)
+    {
+        $connection = self::$clients[$resourceID];
+        $connection->close();
+    }
 }

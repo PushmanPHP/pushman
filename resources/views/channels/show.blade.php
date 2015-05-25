@@ -45,14 +45,14 @@
 	</div>
 
 	<div class="row bottom40">
-		<div class="col-lg-3">
+		<div class="col-lg-4">
 			<a href="/sites/{{$site->id}}/channels/{{$channel->id}}/regenerate" class="btn btn-warning btn-block swal">Regenerate Token</a>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-4">
 			<a href="/sites/{{$site->id}}/channels/{{$channel->id}}/toggle" class="btn btn-warning btn-block swal">Toggle Auto-refresh</a>
 		</div>
 		@if($channel->name !== 'public')
-			<div class="col-lg-3">
+			<div class="col-lg-4">
 				<a href="/sites/{{$site->id}}/channels/{{$channel->id}}/delete" class="btn btn-danger btn-block swal">Delete Channel</a>
 			</div>
 		@endif

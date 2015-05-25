@@ -7,6 +7,9 @@ resource('sites', 'SiteController', ['only' => ['create', 'store', 'show', 'dest
 get('sites/{sites}/regenerate', 'SiteController@regenerate');
 get('sites/{sites}/delete', 'SiteController@destroy');
 
+get('sites/{sites}/subscribers', 'SubscriberController@show');
+get('sites/{sites}/subscribers/{resource_id}/disconnect', 'SubscriberController@disconnect');
+
 resource('sites/{sites}/channels', 'ChannelController');
 get('sites/{sites}/channels/{channels}/regenerate', 'ChannelController@regenerate');
 get('sites/{sites}/channels/{channels}/delete', 'ChannelController@destroy');

@@ -9,7 +9,25 @@ class Client extends Model {
 
     public function subscriptions()
     {
-        return $this->belongsToMany('Pushman\Channel');
+        return $this->belongsToMany('Pushman\Channel')->withPivot('event');
+    }
+
+    public function listensto()
+    {
+        return $this->belongsToMany('Pushman\Channel')->where('event', '!=', 'public')->withPivot('event');
+    }
+
+    public function events()
+    {
+        $events = [];
+        foreach ($this->listensto()->get() as $channel) {
+            $events[] = [
+                'event_name'   => $channel->toArray()['pivot']['event'],
+                'channel_name' => $channel->name,
+            ];
+        }
+
+        return $events;
     }
 
     public function site()
