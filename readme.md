@@ -80,6 +80,8 @@ Once the database configuration is set, you can run `php artisan migrate` follow
 
 **You MUST set an App Key.**
 
+You may also need to run `find storage/* -type d -exec chmod 775 {} \;` to grant write permissions on your storage folder
+
 #### Runtime
 Pushman itself can then be run by using `php artisan pushman:run`. I highly recommend setting up a supervisord task for this or in Forge, go into your server tab and enter the full path to artisan and Forge will auto monitor the task for you.
 
