@@ -7,11 +7,20 @@ use Pushman\Site;
 
 class SubscriberController extends Controller {
 
+    /**
+     * Build middleware
+     */
     public function __construct()
     {
         $this->middleware('ownership');
     }
 
+    /**
+     * Shows a sites subscribers
+     *
+     * @param \Pushman\Site $site
+     * @return \Illuminate\View\View
+     */
     public function show(Site $site)
     {
         $subscribers = Client::with('listensto')->where('site_id', $site->id)->get();
@@ -19,6 +28,13 @@ class SubscriberController extends Controller {
         return view('subscribers.show', compact('site', 'subscribers'));
     }
 
+    /**
+     * Force disconnects someone
+     *
+     * @param \Pushman\Site $site
+     * @param               $resourceID
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function disconnect(Site $site, $resourceID)
     {
         $pushmanPayload = [
