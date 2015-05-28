@@ -35,7 +35,7 @@ class ChannelRepository {
         return $channel;
     }
 
-    public static function validateName($name, $site)
+    public static function validateName($name, Site $site)
     {
         $channel = $site->channels()->where('name', $name)->first();
 
@@ -44,5 +44,22 @@ class ChannelRepository {
         }
 
         throw new InvalidChannelException('This channel already exists.');
+    }
+
+    public static function validateMaxConnections($max_connections)
+    {
+        $max_connections = (int)$max_connections;
+
+        if (user() && user()->isAdmin()) {
+            return true;
+        }
+
+        $defined_max = env('PUSHMAN_MAX', 3);
+
+        if ($max_connections > $defined_max OR $max_connections === 0) {
+            return false;
+        }
+
+        return true;
     }
 }

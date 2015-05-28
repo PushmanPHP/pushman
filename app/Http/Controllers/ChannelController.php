@@ -100,19 +100,7 @@ class ChannelController extends Controller {
      */
     private function validateMaxConnections($max_connections)
     {
-        $max_connections = (int)$max_connections;
-
-        if (user()->isAdmin()) {
-            return true;
-        }
-
-        $defined_max = env('PUSHMAN_MAX', 200);
-
-        if ($max_connections > $defined_max OR $max_connections === 0) {
-            return false;
-        }
-
-        return true;
+        return ChannelRepository::validateMaxConnections($max_connections);
     }
 
     /**

@@ -28,6 +28,11 @@ class SiteRepository {
         return $site;
     }
 
+    public static function find($private_key)
+    {
+        return Site::where('private', $private_key)->first();
+    }
+
     public static function siteExists($url)
     {
         $existing_count = Site::where('url', $url)->count();
