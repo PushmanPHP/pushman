@@ -11,6 +11,7 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 ## Todo for Version 2.3
 * Localization Support
 * Feature: Ban IP (long term)
+* Allow for people to create and delete channels via the API
 
 ## Todo for Version 3
 *I'm really sorry I pushed test writing back to V3, it is a top priority but I need to refactor loads of code I wrote hastily to ensure PHPSpec can work. Watch for code refactors marked "preperation for testing" in the future*
