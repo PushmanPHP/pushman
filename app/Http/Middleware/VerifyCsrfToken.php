@@ -14,7 +14,9 @@ class VerifyCsrfToken extends BaseVerifier {
      */
     public function handle($request, Closure $next)
     {
-        if ($request->getMethod() === 'POST') {
+        $allowedToBypass = ['POST', 'DELETE'];
+
+        if (in_array($request->getMethod(), $allowedToBypass)) {
             $url = $request->url();
 
             if (preg_match('/\/sites\/\d+\/channels\/\d+\/max/', $url) === 1) {
