@@ -36,6 +36,11 @@ Route::group(['prefix' => 'auth'], function () {
 get('settings', 'SettingsController@index');
 post('settings', 'SettingsController@store');
 
-post('api/push', 'APIController@push');
-get('api/channel', 'APIController@channel');
-get('api/channels', 'APIController@channels');
+Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
+    post('push', 'EventController@push');
+    get('channel', 'InformationController@channel');
+    post('channel', 'ChannelController@create');
+    delete('channel', 'ChannelController@destroy');
+    get('channels', 'InformationController@channels');
+});
+
