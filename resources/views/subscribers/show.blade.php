@@ -64,4 +64,10 @@
 		</div>
 	</div>
 
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-default btn-sm" href="/sites/{{$site->id}}">Back to Site</a>
+        </div>
+    </div>
+
 @endsection
