@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel {
         'Pushman\Console\Commands\Inspire',
         'Pushman\Console\Commands\Pushman',
         'Pushman\Console\Commands\RefreshTokens',
+        'Pushman\Console\Commands\UpdateBans'
     ];
 
     /**
@@ -29,5 +30,8 @@ class Kernel extends ConsoleKernel {
 
         $schedule->command('pushman:refresh')
             ->hourly();
+
+        $schedule->command('pushman:bans')
+            ->daily();
     }
 }

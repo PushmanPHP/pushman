@@ -1,5 +1,6 @@
 <?php namespace Pushman\Http\Controllers;
 
+use Pushman\Ban;
 use Pushman\Channel;
 use Pushman\Client;
 use Pushman\Http\Requests;
@@ -50,6 +51,19 @@ class SubscriberController extends Controller {
         $socket->send($pushmanPayload);
 
         flash()->warning('Forced client ' . $resourceID . ' to disconnect.');
+
+        return redirect()->back();
+    }
+
+    public function ban(Site $site, $resourceID)
+    {
+        $this->disconnect($site, $resourceID);
+
+        $client = Client::where('resource_id', $resourceID)->first();
+
+        Ban::ban($site, $client);
+
+        flash()->error('Forced client ' . $resourceID . ' to disconnect and he was banned.');
 
         return redirect()->back();
     }

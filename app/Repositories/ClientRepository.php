@@ -2,9 +2,11 @@
 
 use DB;
 use Illuminate\Support\Collection;
+use Pushman\Ban;
 use Pushman\Channel;
 use Pushman\Client;
 use Pushman\Exceptions\InvalidTokenException;
+use Pushman\Exceptions\UserIsBannedException;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\Topic;
 
@@ -22,6 +24,8 @@ class ClientRepository {
         try {
             $public_channel = $this->validateToken($token);
 
+            $this->isUserBanned($conn, $public_channel->site->id);
+
             $this->validateMaxConnections($public_channel, $conn);
 
             self::$clients->put($conn->resourceId, $conn);
@@ -34,7 +38,10 @@ class ClientRepository {
             $client->subscriptions()->attach($public_channel->id, ['event' => 'public']);
             qlog("Client {$conn->resourceId} connected successfully.");
         } catch (InvalidTokenException $ex) {
-            qlog("{$conn->resourceId} attmpted to connect with an invalid token.\n");
+            qlog("{$conn->resourceId} attmpted to connect with an invalid token.");
+            $conn->close();
+        } catch (UserIsBannedException $ex) {
+            qlog("{$conn->resourceId} attmpted to connect but is banned.");
             $conn->close();
         }
     }
@@ -163,5 +170,16 @@ class ClientRepository {
     {
         $connection = self::$clients[$resourceID];
         $connection->close();
+    }
+
+    private function isUserBanned($conn, $site_id)
+    {
+        $banned = Ban::where('ip', $conn->remoteAddress)
+            ->where('active', 'yes')
+            ->where('site_id', $site_id)
+            ->first();
+        if ($banned) {
+            throw new UserIsBannedException('This IP address has been banned for ' . $banned->duration . ' days.');
+        }
     }
 }

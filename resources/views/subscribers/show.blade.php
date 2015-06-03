@@ -31,8 +31,10 @@
 							<td>{{ $sub->created_at->diffForHumans(null, true) }}</td>
 							<td>
 								<a class="btn btn-xs btn-warning swal" href="/sites/{{$site->id}}/subscribers/{{$sub->resource_id}}/disconnect">Disconect</a>
+								<a class="btn btn-xs btn-danger swal" href="/sites/{{$site->id}}/subscribers/{{$sub->resource_id}}/ban">Ban</a>
 							</td>
 						</tr>
+						@if(count($sub->events()) >= 1)
 						<tr>
 							<td>&nbsp;</td>
 							<td colspan="4" style="padding:0;">
@@ -54,6 +56,7 @@
 								</table>
 							</td>
 						</tr>
+						@endif
 					@empty
 						<tr>
 							<td colspan="5"><em>No one is listening for events.</em></td>

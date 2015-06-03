@@ -9,6 +9,7 @@ get('sites/{sites}/delete', 'SiteController@destroy');
 
 get('sites/{sites}/subscribers', 'SubscriberController@show');
 get('sites/{sites}/subscribers/{resource_id}/disconnect', 'SubscriberController@disconnect');
+get('sites/{sites}/subscribers/{resource_id}/ban', 'SubscriberController@ban');
 
 resource('sites/{sites}/channels', 'ChannelController');
 get('sites/{sites}/channels/{channels}/regenerate', 'ChannelController@regenerate');
