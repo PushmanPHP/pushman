@@ -26,6 +26,11 @@ elixir(function(mix) {
         'vendor/sweet-alert.js',
         'vendor/bootstrap-editable.js',
     	'vendor/autobahn.min.js',
+        'vendor/vue.min.js',
+
+        // vuejs scripts
+        'vuejs/ban.js',
+
     	'site.js'
     ], null, 'public/js');
 });

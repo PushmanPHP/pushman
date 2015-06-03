@@ -70,6 +70,7 @@
     <div class="row">
         <div class="col-lg-12">
             <a class="btn btn-default btn-sm" href="/sites/{{$site->id}}">Back to Site</a>
+            <a href="/sites/{{$site->id}}/bans" class="btn btn-info btn-sm">View Bans</a>
         </div>
     </div>
 

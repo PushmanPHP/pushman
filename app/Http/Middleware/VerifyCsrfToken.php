@@ -26,6 +26,10 @@ class VerifyCsrfToken extends BaseVerifier {
             if (str_contains($url, '/api/')) {
                 return $next($request);
             }
+
+            if (str_contains($url, '/ban/update')) {
+                return $next($request);
+            }
         }
 
         return parent::handle($request, $next);

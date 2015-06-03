@@ -20,12 +20,14 @@ class UpdateBans extends Command implements SelfHandling {
         $bans = Ban::where('active', 'yes')->get();
 
         foreach ($bans as $ban) {
-            $banned_at = $ban->created_at;
-            $end_at = $banned_at->addDays($ban->duration);
+            if ($ban->duration != '*') {
+                $banned_at = $ban->created_at;
+                $end_at = $banned_at->addDays($ban->duration);
 
-            if ($end_at->isPast()) {
-                $ban->active = 'no';
-                $ban->save();
+                if ($end_at->isPast()) {
+                    $ban->active = 'no';
+                    $ban->save();
+                }
             }
         }
     }

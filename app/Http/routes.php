@@ -3,9 +3,13 @@
 get('/', 'DashboardController@dashboard');
 get('dashboard', 'DashboardController@dashboard');
 
+post('ban/update', 'BanController@update');
+
 resource('sites', 'SiteController', ['only' => ['create', 'store', 'show', 'destroy']]);
 get('sites/{sites}/regenerate', 'SiteController@regenerate');
 get('sites/{sites}/delete', 'SiteController@destroy');
+get('sites/{sites}/bans', 'BanController@index');
+get('sites/{sites}/unban/{ban_id}', 'BanController@unban');
 
 get('sites/{sites}/subscribers', 'SubscriberController@show');
 get('sites/{sites}/subscribers/{resource_id}/disconnect', 'SubscriberController@disconnect');
