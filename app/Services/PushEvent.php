@@ -1,6 +1,7 @@
 <?php namespace Pushman\Services;
 
 use Carbon\Carbon;
+use GrahamCampbell\Binput\Facades\Binput;
 use Illuminate\Support\Collection;
 use Pushman\Channel;
 use Pushman\Exceptions\InvalidPayloadException;
@@ -106,6 +107,8 @@ class PushEvent {
             }
         }
         $payload = implode('', $characterArray);
+
+        $payload = BInput::clean($payload);
 
         if ( !$this->isJson($payload) OR $this->containsScripts($payload)) {
             throw new InvalidPayloadException('Bad JSON');

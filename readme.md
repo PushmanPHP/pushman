@@ -8,11 +8,9 @@ You can bind server side events to client notifications.
 
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
-## Todo for Version 2.3
+## Todo for Version 2.4
 * User specific broadcasting
   * Associate a connection id with a users ID to allow broadcasting on channels to specific ids.
-
-## Todo for Version 2.4
 * Shad is working on a cool new User Interface
 
 ## Todo for Version 3

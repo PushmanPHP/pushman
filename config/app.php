@@ -139,6 +139,8 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'GrahamCampbell\Security\SecurityServiceProvider',
+        'GrahamCampbell\Binput\BinputServiceProvider',
 
         /*
          * Application Service Providers...
@@ -198,8 +200,8 @@ return [
         'View'      => 'Illuminate\Support\Facades\View',
         'Form'      => 'Illuminate\Html\FormFacade',
         'HTML'      => 'Illuminate\Html\HtmlFacade',
-        'PushPrep'  => 'Pushman\Facades\PushPrep'
-
+        'PushPrep'  => 'Pushman\Facades\PushPrep',
+        'Binput'    => 'GrahamCampbell\Binput\Facades\Binput'
     ],
 
 ];
