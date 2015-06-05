@@ -11,6 +11,7 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 ## Todo for Version 2.4
 * User specific broadcasting
   * Associate a connection id with a users ID to allow broadcasting on channels to specific ids.
+  * Because of how diverse different user systems are, make it a trait importable from the PHP lib?
 * Shad is working on a cool new User Interface
 
 ## Todo for Version 3
