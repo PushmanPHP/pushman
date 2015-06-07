@@ -10,6 +10,28 @@
 
 namespace Pushman{
 /**
+ * Pushman\Ban
+ *
+ * @property integer $id 
+ * @property integer $site_id 
+ * @property string $ip 
+ * @property integer $duration 
+ * @property string $active 
+ * @property \Carbon\Carbon $created_at 
+ * @property \Carbon\Carbon $updated_at 
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereSiteId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereIp($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereDuration($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\Ban whereUpdatedAt($value)
+ */
+	class Ban {}
+}
+
+namespace Pushman{
+/**
  * Pushman\Channel
  *
  * @property integer $id 
@@ -49,6 +71,7 @@ namespace Pushman{
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
  * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Channel[] $subscriptions 
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Channel[] $listensto 
  * @property-read \Pushman\Site $site 
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Client whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\Client whereResourceId($value)
@@ -112,6 +135,7 @@ namespace Pushman{
  * @property string $remember_token 
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
+ * @property string $locale 
  * @property-read \Illuminate\Database\Eloquent\Collection|\Pushman\Site[] $sites 
  * @method static \Illuminate\Database\Query\Builder|\Pushman\User whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\User whereUsername($value)
@@ -121,6 +145,7 @@ namespace Pushman{
  * @method static \Illuminate\Database\Query\Builder|\Pushman\User whereRememberToken($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Pushman\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pushman\User whereLocale($value)
  */
 	class User {}
 }
