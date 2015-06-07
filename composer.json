@@ -17,7 +17,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.0.*",
+        "laravel/framework": "5.1.*",
         "cboden/ratchet": "dev-master",
         "react/zmq": "^0.4.0@dev",
         "illuminate/html": "^5.0",
@@ -64,5 +64,7 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
