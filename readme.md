@@ -9,9 +9,7 @@ You can bind server side events to client notifications.
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
 ## Todo for Version 2.4
-* User specific broadcasting
-  * Associate a connection id with a users ID to allow broadcasting on channels to specific ids.
-  * Because of how diverse different user systems are, make it a trait importable from the PHP lib?
+* User Payloads (AKA User specific broadcasting) (See User Payloads at the bottom)
 * Shad is working on a cool new User Interface
 
 ## Todo for Version 3
@@ -21,6 +19,7 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 * Integrate with StyleCI
 * Build Pushman Lite as an independant Package to include in sites.
 * Way better documentation for building Pushman.
+* Allow users to broadcast back to the server.
 
 ### Long term todo list
 * Push console logs out on PushmanInternal Channel. // later
@@ -82,7 +81,7 @@ Once the database configuration is set, you can run `php artisan migrate` follow
 
 **You MUST set an App Key.**
 
-You may also need to run `chmod -R 775 storage/` to grant write permissions on your storage folder
+You may also need to run `chmod -R 777 storage/` to grant write permissions on your storage folder. You may also need to run `chmod -R 777 bootstrap/cache` to grant write permissions on the cache directory.
 
 #### Runtime
 Pushman itself can then be run by using `php artisan pushman:run`. I highly recommend setting up a supervisord task for this or in Forge, go into your server tab and enter the full path to artisan and Forge will auto monitor the task for you.
@@ -95,3 +94,9 @@ If you discover a security vulnerability within Pushman, please send an e-mail t
 
 ## License
 Pushman is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+# Thinking out load
+## Payload Pushing
+Currently we use a TOKEN in the URL string to see if the user is authorized to connect. Could we find a better way to push data to the server, things like a unique ID identifying them as a user perhaps? 
+
+After that, we can allow an API to /api/listeners or something which returns the listeners of a channel, the events they listen to, and any of that data. Then we allow an API point for /api/whisper which broadcasts back to a specific user only.
