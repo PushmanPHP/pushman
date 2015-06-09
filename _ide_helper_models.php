@@ -7,6 +7,7 @@
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  */
+
 namespace Pushman{
     /**
      * Pushman\Ban.
