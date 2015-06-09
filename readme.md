@@ -8,6 +8,9 @@ You can bind server side events to client notifications.
 
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
+## Todo for Version 2.5
+* Make API endpoint for broadcasting to a specific client only.
+
 ## Todo for Version 3
 *Okay, testing is the next big thing. Thanks to laravel 5.1, I'll write up tests in PHPUnit!*
 
