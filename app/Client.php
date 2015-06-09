@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    protected $fillable = ['resource_id', 'ip', 'site_id', 'channel_id'];
+    protected $fillable = ['resource_id', 'ip', 'site_id', 'channel_id', 'userdata'];
 
     public function subscriptions()
     {
@@ -39,10 +39,7 @@ class Client extends Model
 
     public function isSubscribed(Channel $channel, $event)
     {
-        $subCount = $this->subscriptions()
-            ->where('channel_id', $channel->id)
-            ->where('event', $event)
-            ->count();
+        $subCount = $this->subscriptions()->where('channel_id', $channel->id)->where('event', $event)->count();
 
         return $subCount >= 1;
     }
