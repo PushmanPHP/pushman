@@ -8,22 +8,17 @@ You can bind server side events to client notifications.
 
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
-## Todo for Version 2.4
-* User Payloads (AKA User specific broadcasting) (See User Payloads at the bottom)
-* Shad is working on a cool new User Interface
-
 ## Todo for Version 3
-*I'm really sorry I pushed test writing back to V3, it is a top priority but I need to refactor loads of code I wrote hastily to ensure PHPSpec can work. Watch for code refactors marked "preperation for testing" in the future*
+*Okay, testing is the next big thing. Thanks to laravel 5.1, I'll write up tests in PHPUnit!*
 
 * Write tests for PHPLib and Pushman :) Integrate with travis-ci
-* Integrate with StyleCI
 * Build Pushman Lite as an independant Package to include in sites.
 * Way better documentation for building Pushman.
 * Allow users to broadcast back to the server.
 
 ### Long term todo list
+* Shad is working on a cool new User Interface
 * Push console logs out on PushmanInternal Channel. // later
-* &lt;script&gt; tags in Payloads are excuted. // fixed but needs more
 
 ## Official Documentation
 Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/documentation).
