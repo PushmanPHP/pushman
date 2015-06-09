@@ -9,8 +9,8 @@ use Ratchet\Wamp\ServerProtocol as WAMP;
 use Ratchet\Wamp\Topic;
 use Ratchet\Wamp\WampServerInterface;
 
-class PushmanHandler implements WampServerInterface {
-
+class PushmanHandler implements WampServerInterface
+{
     /**
      * @var \Pushman\Repositories\ClientRepository
      */
@@ -37,7 +37,7 @@ class PushmanHandler implements WampServerInterface {
      *
      * @param \Ratchet\ConnectionInterface $conn
      */
-    function onOpen(ConnectionInterface $conn)
+    public function onOpen(ConnectionInterface $conn)
     {
         $token = TokenHandler::getToken($conn);
         $this->clients->bind($conn, $token);
@@ -48,7 +48,7 @@ class PushmanHandler implements WampServerInterface {
      * @param  ConnectionInterface $conn The socket/connection that is closing/closed
      * @throws \Exception
      */
-    function onClose(ConnectionInterface $conn)
+    public function onClose(ConnectionInterface $conn)
     {
         $this->clients->unbind($conn);
         $this->checkTopicRequirements($conn);
@@ -61,7 +61,7 @@ class PushmanHandler implements WampServerInterface {
      * @param  \Exception          $e
      * @throws \Exception
      */
-    function onError(ConnectionInterface $conn, \Exception $e)
+    public function onError(ConnectionInterface $conn, \Exception $e)
     {
         qlog("ERROR: {$e->getMessage()}");
         // $trace = $e->getTrace();
@@ -75,7 +75,7 @@ class PushmanHandler implements WampServerInterface {
      * @param string|Topic                 $topic  The topic to execute the call against
      * @param array                        $params Call parameters received from the client
      */
-    function onCall(ConnectionInterface $conn, $id, $topic, array $params)
+    public function onCall(ConnectionInterface $conn, $id, $topic, array $params)
     {
         qlog("{$conn->resourceId} has tried to make a call.");
         $conn->callError($id, $topic, 'You are not allowed to make calls');
@@ -87,7 +87,7 @@ class PushmanHandler implements WampServerInterface {
      * @param \Ratchet\ConnectionInterface $conn
      * @param string|Topic                 $topic The topic to subscribe to
      */
-    function onSubscribe(ConnectionInterface $conn, $topic)
+    public function onSubscribe(ConnectionInterface $conn, $topic)
     {
         $this->clients->subscribe($conn, $topic);
         $this->topics[$topic->getId()] = $topic;
@@ -98,7 +98,7 @@ class PushmanHandler implements WampServerInterface {
      * @param \Ratchet\ConnectionInterface $conn
      * @param string|Topic                 $topic The topic to unsubscribe from
      */
-    function onUnSubscribe(ConnectionInterface $conn, $topic)
+    public function onUnSubscribe(ConnectionInterface $conn, $topic)
     {
         $this->clients->unsubscribe($conn, $topic);
         $this->checkTopicRequirements($conn);
@@ -112,7 +112,7 @@ class PushmanHandler implements WampServerInterface {
      * @param array                        $exclude  A list of session IDs the message should be excluded from (blacklist)
      * @param array                        $eligible A list of session Ids the message should be send to (whitelist)
      */
-    function onPublish(ConnectionInterface $conn, $topic, $event, array $exclude, array $eligible)
+    public function onPublish(ConnectionInterface $conn, $topic, $event, array $exclude, array $eligible)
     {
         qlog("Client {$conn->resourceId} is trying to publish something.");
         $conn->close();
@@ -138,7 +138,7 @@ class PushmanHandler implements WampServerInterface {
         foreach ($channels as $channel) {
             $name = TopicHandler::processEventName($pureName, $channel);
 
-            if ( !array_key_exists($name, $this->topics)) {
+            if (!array_key_exists($name, $this->topics)) {
                 qlog("Event {$name} receieved. No one to push to.");
 
                 continue;
@@ -177,7 +177,7 @@ class PushmanHandler implements WampServerInterface {
     private function checkTopicRequirements(ConnectionInterface $conn = null)
     {
         foreach ($this->topics as $name => $topic) {
-            if ( !is_null($conn)) {
+            if (!is_null($conn)) {
                 $topic->remove($conn);
             }
             $subscriber_count = count($topic);

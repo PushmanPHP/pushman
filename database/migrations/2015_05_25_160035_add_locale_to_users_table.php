@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddLocaleToUsersTable extends Migration {
-
+class AddLocaleToUsersTable extends Migration
+{
     /**
      * Run the migrations.
      *

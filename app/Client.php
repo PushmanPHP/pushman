@@ -3,8 +3,8 @@
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model {
-
+class Client extends Model
+{
     protected $fillable = ['resource_id', 'ip', 'site_id', 'channel_id'];
 
     public function subscriptions()

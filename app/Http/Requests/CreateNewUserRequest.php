@@ -1,7 +1,7 @@
 <?php namespace Pushman\Http\Requests;
 
-class CreateNewUserRequest extends Request {
-
+class CreateNewUserRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *

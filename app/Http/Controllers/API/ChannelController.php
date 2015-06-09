@@ -9,8 +9,8 @@ use Pushman\Repositories\ChannelRepository;
 use Pushman\Repositories\SiteRepository;
 use Validator;
 
-class ChannelController extends Controller {
-
+class ChannelController extends Controller
+{
     /**
      * Create a set of channels
      *
@@ -42,7 +42,7 @@ class ChannelController extends Controller {
         }
 
         $site = SiteRepository::find($request->private);
-        if ( !$site) {
+        if (!$site) {
             return response()->json([
                 'status' => 'error', 'message' => 'Unable to validate private key.'
             ]);
@@ -63,7 +63,7 @@ class ChannelController extends Controller {
             $refreshes = $request->refreshes ? $request->refreshes : 'no';
             $max = $request->max ? $request->max : 3;
 
-            if ( !ChannelRepository::validateMaxConnections($max)) {
+            if (!ChannelRepository::validateMaxConnections($max)) {
                 return response()->json([
                     'status' => 'error', 'message' => 'That is not a valid amount of max connections.'#
                 ]);
@@ -97,7 +97,7 @@ class ChannelController extends Controller {
         }
 
         $site = SiteRepository::find($request->private);
-        if ( !$site) {
+        if (!$site) {
             return response()->json([
                 'status' => 'error', 'message' => 'Unable to validate the private key.'
             ]);

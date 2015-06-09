@@ -1,7 +1,7 @@
 <?php namespace Pushman\Http\Requests;
 
-class CreateSiteRequest extends Request {
-
+class CreateSiteRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *

@@ -2,6 +2,6 @@
 
 use Exception;
 
-class UserIsBannedException extends Exception {
-
-} 
+class UserIsBannedException extends Exception
+{
+}

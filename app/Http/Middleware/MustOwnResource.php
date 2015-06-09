@@ -4,8 +4,8 @@ use Closure;
 use Pushman\Exceptions\InvalidRequestException;
 use Pushman\Interfaces\Ownable;
 
-class MustOwnResource {
-
+class MustOwnResource
+{
     /**
      * Handle an incoming request.
      *
@@ -25,20 +25,20 @@ class MustOwnResource {
         $resources = [];
 
         $site = $request->route()->getParameter('sites');
-        if ( !is_null($site)) {
+        if (!is_null($site)) {
             $resources[] = $site;
         }
 
         $channel = $request->route()->getParameter('channels');
-        if ( !is_null($channel)) {
+        if (!is_null($channel)) {
             $resources[] = $channel;
         }
 
         foreach ($resources as $resource) {
-            if ( !$resource instanceof Ownable) {
+            if (!$resource instanceof Ownable) {
                 throw new InvalidRequestException('Cannot check ownership on this object.');
             }
-            if ( !$resource->ownedBy($user)) {
+            if (!$resource->ownedBy($user)) {
                 $allowed = false;
             }
         }

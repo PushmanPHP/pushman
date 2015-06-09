@@ -7,8 +7,8 @@ use Pushman\Services\PushEvent;
 use Pushman\Site;
 use Validator;
 
-class EventController extends Controller {
-
+class EventController extends Controller
+{
     /**
      * Handles in the incoming push request for Pushman.
      *
@@ -61,7 +61,7 @@ class EventController extends Controller {
      */
     private function getChannels($channels)
     {
-        if ( !isJson($channels)) {
+        if (!isJson($channels)) {
             return [$channels];
         }
 

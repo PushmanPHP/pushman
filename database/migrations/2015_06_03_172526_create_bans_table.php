@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBansTable extends Migration {
-
+class CreateBansTable extends Migration
+{
     /**
      * Run the migrations.
      *

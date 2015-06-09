@@ -8,8 +8,8 @@ use Pushman\Http\Requests\UpdateMaxConnectionsRequest;
 use Pushman\Repositories\ChannelRepository;
 use Pushman\Site;
 
-class ChannelController extends Controller {
-
+class ChannelController extends Controller
+{
     /**
      * Build up middleware.
      */
@@ -56,7 +56,7 @@ class ChannelController extends Controller {
 
         $name = $this->validateName($name, $site);
 
-        if ( !$this->validateMaxConnections($max_connections)) {
+        if (!$this->validateMaxConnections($max_connections)) {
             return redirect()->back()->withInput()->withErrors(['max_connections' => 'You cannot have that many max connections']);
         }
 
@@ -165,7 +165,6 @@ class ChannelController extends Controller {
      */
     public function maxConnections(Site $site, Channel $channel, UpdateMaxConnectionsRequest $request)
     {
-
         if ($this->validateMaxConnections($request->value)) {
             $channel->max_connections = $request->value;
             $channel->save();

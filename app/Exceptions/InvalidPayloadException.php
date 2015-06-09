@@ -2,6 +2,6 @@
 
 use Exception;
 
-class InvalidPayloadException extends Exception {
-
-} 
+class InvalidPayloadException extends Exception
+{
+}

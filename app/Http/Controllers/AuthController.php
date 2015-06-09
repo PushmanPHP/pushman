@@ -7,8 +7,8 @@ use Pushman\Http\Requests\CreateNewUserRequest;
 use Pushman\Http\Requests\LoginRequest;
 use Pushman\User;
 
-class AuthController extends Controller {
-
+class AuthController extends Controller
+{
     /**
      * @var \Illuminate\Contracts\Auth\Guard
      */
@@ -66,14 +66,14 @@ class AuthController extends Controller {
 
         $user = User::whereUsername($credentials['username'])->first();
 
-        if ( !$user) {
+        if (!$user) {
             $this->flash->error('Unable to load user details.');
 
             return redirect('/auth/login')
                 ->withInput($request->only('email', 'remember'));
         }
 
-        if ( !$user->allowedToLogin()) {
+        if (!$user->allowedToLogin()) {
             $this->flash->error('This account is not active.');
 
             return redirect('/auth/login')
@@ -119,7 +119,7 @@ class AuthController extends Controller {
             'status'   => 'active'
         ]);
 
-        if ( !empty($override)) {
+        if (!empty($override)) {
             if ($override === env('APP_KEY')) {
                 $user->status = 'admin';
                 $user->save();

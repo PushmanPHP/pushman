@@ -11,8 +11,8 @@ use React\EventLoop\Factory as EventLoopFactory;
 use React\Socket\Server;
 use React\ZMQ\Context;
 
-class Pushman extends Command implements SelfHandling {
-
+class Pushman extends Command implements SelfHandling
+{
     protected $description = "Runs the Pushman server.";
 
     protected $name = "pushman:run";

@@ -7,8 +7,8 @@ use Pushman\Channel;
 use Pushman\Exceptions\InvalidPayloadException;
 use Pushman\Site;
 
-class PushEvent {
-
+class PushEvent
+{
     /**
      * Handles an incoming event from any source
      * Pushes it out to the PushmanHandler via ZeroMQ
@@ -23,7 +23,7 @@ class PushEvent {
     public function handle($private, $event, $channels = [], $payload = '', $logRequest = true)
     {
         $site = Site::where('private', $private)->first();
-        if ( !$site) {
+        if (!$site) {
             return ['status' => 'error', 'message' => 'Unable to link private key to site.'];
         }
 
@@ -34,7 +34,7 @@ class PushEvent {
         $arrChannels = new Collection();
         foreach ($channels as $strChannel) {
             $channel = Channel::where('name', $strChannel)->where('site_id', $site->id)->first();
-            if ( !$channel) {
+            if (!$channel) {
                 return ['status' => 'error', 'message' => 'Channel does not exist.'];
             }
             $arrChannels[] = $channel;
@@ -110,7 +110,7 @@ class PushEvent {
 
         $payload = BInput::clean($payload);
 
-        if ( !$this->isJson($payload) OR $this->containsScripts($payload)) {
+        if (!$this->isJson($payload) or $this->containsScripts($payload)) {
             throw new InvalidPayloadException('Bad JSON');
         }
 

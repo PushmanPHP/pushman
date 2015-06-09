@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ban extends Model {
-
+class Ban extends Model
+{
     protected $fillable = ['ip', 'duration', 'site_id'];
 
     public static function ban(Site $site, Client $client)

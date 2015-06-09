@@ -15,8 +15,8 @@ use Ratchet\WebSocket\WsServerInterface;
  * @link https://github.com/oberstet/AutobahnJS Souce for client side library
  * @link http://autobahn.s3.amazonaws.com/js/autobahn.min.js Minified client side library
  */
-class PushmanWampServer implements MessageComponentInterface, WsServerInterface {
-
+class PushmanWampServer implements MessageComponentInterface, WsServerInterface
+{
     /**
      * @var ServerProtocol
      */

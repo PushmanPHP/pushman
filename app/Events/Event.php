@@ -1,7 +1,6 @@
 <?php namespace Pushman\Events;
 
-abstract class Event {
-
-	//
-
+abstract class Event
+{
+    //
 }

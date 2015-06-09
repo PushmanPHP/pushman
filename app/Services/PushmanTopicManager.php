@@ -6,8 +6,8 @@ use Ratchet\Wamp\Topic;
 use Ratchet\Wamp\WampServerInterface;
 use Ratchet\WebSocket\WsServerInterface;
 
-class PushmanTopicManager implements WsServerInterface, WampServerInterface {
-
+class PushmanTopicManager implements WsServerInterface, WampServerInterface
+{
     /**
      * @var WampServerInterface
      */
@@ -73,7 +73,7 @@ class PushmanTopicManager implements WsServerInterface, WampServerInterface {
 
         $topicObj = $this->getTopic($topic);
 
-        if ( !$conn->WAMP->subscriptions->contains($topicObj)) {
+        if (!$conn->WAMP->subscriptions->contains($topicObj)) {
             return;
         }
 
@@ -128,7 +128,7 @@ class PushmanTopicManager implements WsServerInterface, WampServerInterface {
      */
     protected function getTopic($topic)
     {
-        if ( !array_key_exists($topic, $this->topicLookup)) {
+        if (!array_key_exists($topic, $this->topicLookup)) {
             $this->topicLookup[$topic] = new Topic($topic);
         }
 

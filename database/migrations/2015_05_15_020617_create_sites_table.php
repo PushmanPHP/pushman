@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSitesTable extends Migration {
-
+class CreateSitesTable extends Migration
+{
     /**
      * Run the migrations.
      *

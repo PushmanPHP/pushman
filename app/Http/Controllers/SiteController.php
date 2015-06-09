@@ -6,8 +6,8 @@ use Pushman\Http\Requests\CreateSiteRequest;
 use Pushman\Repositories\SiteRepository;
 use Pushman\Site;
 
-class SiteController extends Controller {
-
+class SiteController extends Controller
+{
     /**
      * Start middleware
      */

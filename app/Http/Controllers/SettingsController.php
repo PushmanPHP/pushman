@@ -3,8 +3,8 @@
 use Pushman\Http\Requests;
 use Pushman\Http\Requests\SettingsRequest;
 
-class SettingsController extends Controller {
-
+class SettingsController extends Controller
+{
     /**
      * Build middleware
      */

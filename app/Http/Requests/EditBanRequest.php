@@ -1,7 +1,7 @@
 <?php namespace Pushman\Http\Requests;
 
-class EditBanRequest extends Request {
-
+class EditBanRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *

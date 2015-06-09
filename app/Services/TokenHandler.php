@@ -1,20 +1,19 @@
 <?php namespace Pushman\Services;
 
+use League\Url\Url;
 use Ratchet\ConnectionInterface;
 
-class TokenHandler {
-
+class TokenHandler
+{
     public static function getToken(ConnectionInterface $conn)
     {
         $url = $conn->wrappedConn->WebSocket->request->getUrl();
-        $tokenFinder = "?token=";
-        $tokenPos = strpos($url, $tokenFinder);
-        if ($tokenPos === false) {
+        $url = Url::createFromUrl($url);
+        $token = $url->query->getValue('token');
+
+        if (!isset($token) or empty($token)) {
             return false;
         }
-
-        $strLength = $tokenPos + strlen($tokenFinder);
-        $token = substr($url, $strLength);
 
         return $token;
     }

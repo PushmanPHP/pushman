@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Pushman\Repositories\ChannelRepository;
 use Pushman\Site;
 
-class PushPrep {
-
+class PushPrep
+{
     protected $request;
 
     public function __construct(Request $request)
@@ -25,7 +25,7 @@ class PushPrep {
 
     public function usesInternal(Site $site)
     {
-        if ( !is_null($site->getInternal())) {
+        if (!is_null($site->getInternal())) {
             return true;
         }
 

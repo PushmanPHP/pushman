@@ -3,8 +3,8 @@
 use Pushman\Channel;
 use Ratchet\ConnectionInterface;
 
-class TopicHandler {
-
+class TopicHandler
+{
     public static function processEventName($name, Channel $channel)
     {
         if ($channel->name == 'public)') {

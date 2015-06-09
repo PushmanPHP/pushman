@@ -4,8 +4,8 @@ use Pushman\Channel;
 use Pushman\Exceptions\InvalidChannelException;
 use Pushman\Site;
 
-class ChannelRepository {
-
+class ChannelRepository
+{
     public static function buildPublic(Site $site)
     {
         $channel = Channel::where('site_id', $site->id)->where('name', 'public')->first();
@@ -56,7 +56,7 @@ class ChannelRepository {
 
         $defined_max = env('PUSHMAN_MAX', 3);
 
-        if ($max_connections > $defined_max OR $max_connections === 0) {
+        if ($max_connections > $defined_max or $max_connections === 0) {
             return false;
         }
 

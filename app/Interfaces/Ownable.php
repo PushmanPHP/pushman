@@ -2,8 +2,8 @@
 
 use Pushman\User;
 
-interface Ownable {
-
+interface Ownable
+{
     /**
      * Checks to see if this resources is owned by a user.
      *

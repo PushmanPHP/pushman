@@ -6,8 +6,8 @@ use Pushman\Client;
 use Pushman\Http\Requests;
 use Pushman\Site;
 
-class SubscriberController extends Controller {
-
+class SubscriberController extends Controller
+{
     /**
      * Build middleware
      */

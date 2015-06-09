@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateChannelClientTable extends Migration {
-
+class CreateChannelClientTable extends Migration
+{
     /**
      * Run the migrations.
      *

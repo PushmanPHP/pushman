@@ -2,8 +2,8 @@
 
 use Closure;
 
-class AllowCrossDomainRequest {
-
+class AllowCrossDomainRequest
+{
     /**
      * Handle an incoming request.
      *

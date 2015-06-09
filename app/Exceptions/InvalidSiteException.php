@@ -2,8 +2,6 @@
 
 use Exception;
 
-class InvalidSiteException extends Exception {
-
-
-
-} 
+class InvalidSiteException extends Exception
+{
+}

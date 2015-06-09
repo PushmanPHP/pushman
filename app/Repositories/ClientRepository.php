@@ -10,8 +10,8 @@ use Pushman\Exceptions\UserIsBannedException;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\Topic;
 
-class ClientRepository {
-
+class ClientRepository
+{
     protected static $clients;
 
     public function __construct()
@@ -77,7 +77,7 @@ class ClientRepository {
         $resource_id = $conn->resourceId;
 
         $client = Client::where('resource_id', $resource_id)->first();
-        if ( !$client) {
+        if (!$client) {
             qlog("Unverified client attempted to start listening to {$topic}.");
             $conn->close();
         }
@@ -85,8 +85,8 @@ class ClientRepository {
         list($original, $channel, $key, $event) = $this->seperatePrivateChannel($topic);
         list($channel, $site) = $this->validatePrivateToken($conn, $channel, $key);
 
-        if ( !is_null($channel)) {
-            if ( !$client->isSubscribed($channel, $event)) {
+        if (!is_null($channel)) {
+            if (!$client->isSubscribed($channel, $event)) {
                 $client->subscriptions()->attach($channel->id, ['event' => $event]);
             }
             qlog("{$resource_id} tuned into {$channel->name} on {$site->name}, listening to {$event}.");
@@ -106,7 +106,7 @@ class ClientRepository {
         $resource_id = $conn->resourceId;
 
         $client = Client::where('resource_id', $resource_id)->first();
-        if ( !$client) {
+        if (!$client) {
             qlog("Unverified client attempted to start listening to {$channel}.");
             $conn->close();
 
@@ -120,7 +120,7 @@ class ClientRepository {
             ->where('public', $key)
             ->first();
 
-        if ( !$channel) {
+        if (!$channel) {
             qlog("Verified client attempted to start listening to {$channel} with bad key.");
             $conn->close();
 
@@ -150,7 +150,7 @@ class ClientRepository {
         $resource_id = $conn->resourceId;
 
         $client = Client::where('resource_id', $resource_id)->first();
-        if ( !$client) {
+        if (!$client) {
             qlog("Unverified client attempted to unsubscribe from {$topic}.");
             $conn->close();
         }

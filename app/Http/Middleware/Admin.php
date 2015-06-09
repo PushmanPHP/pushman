@@ -2,8 +2,8 @@
 
 use Closure;
 
-class Admin {
-
+class Admin
+{
     /**
      * Handle an incoming request.
      *

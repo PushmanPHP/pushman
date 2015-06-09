@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateInternalLogsTable extends Migration {
-
+class CreateInternalLogsTable extends Migration
+{
     /**
      * Run the migrations.
      *

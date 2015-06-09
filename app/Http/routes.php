@@ -48,4 +48,3 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
     delete('channel', 'ChannelController@destroy');
     get('channels', 'InformationController@channels');
 });
-

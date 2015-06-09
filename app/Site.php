@@ -4,8 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 use Pushman\Interfaces\Ownable;
 use Pushman\Repositories\ChannelRepository;
 
-class Site extends Model implements Ownable {
-
+class Site extends Model implements Ownable
+{
     /**
      * Hidden fields
      *

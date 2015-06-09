@@ -2,6 +2,6 @@
 
 use Exception;
 
-class InvalidChannelException extends Exception {
-
-} 
+class InvalidChannelException extends Exception
+{
+}

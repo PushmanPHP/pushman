@@ -3,8 +3,8 @@
 use Pushman\Exceptions\InvalidSiteException;
 use Pushman\Site;
 
-class SiteRepository {
-
+class SiteRepository
+{
     public static function buildSite($name, $url, $userid)
     {
         $url = rtrim($url, '/');

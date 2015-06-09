@@ -2,8 +2,8 @@
 
 use Closure;
 
-class SetLocale {
-
+class SetLocale
+{
     /**
      * Handle an incoming request.
      *

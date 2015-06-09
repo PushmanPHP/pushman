@@ -5,8 +5,8 @@ use Laracasts\Flash\FlashNotifier;
 use Pushman\Http\Requests;
 use Pushman\User;
 
-class UsersController extends Controller {
-
+class UsersController extends Controller
+{
     /**
      * @var \Illuminate\Contracts\Auth\Guard
      */

@@ -4,8 +4,8 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Pushman\Ban;
 
-class UpdateBans extends Command implements SelfHandling {
-
+class UpdateBans extends Command implements SelfHandling
+{
     protected $description = "Checks bans to see if they have passed their duration and deactivates them.";
 
     protected $name = "pushman:bans";
@@ -31,4 +31,4 @@ class UpdateBans extends Command implements SelfHandling {
             }
         }
     }
-} 
+}

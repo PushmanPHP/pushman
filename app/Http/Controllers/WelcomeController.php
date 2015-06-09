@@ -1,7 +1,7 @@
 <?php namespace Pushman\Http\Controllers;
 
-class WelcomeController extends Controller {
-
+class WelcomeController extends Controller
+{
     /**
      * Setup middleware
      */
@@ -9,5 +9,4 @@ class WelcomeController extends Controller {
     {
         $this->middleware('auth');
     }
-
 }

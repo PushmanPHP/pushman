@@ -7,8 +7,8 @@ use Pushman\Http\Controllers\Controller;
 use Pushman\Site;
 use Validator;
 
-class InformationController extends Controller {
-
+class InformationController extends Controller
+{
     /**
      * returns information on a single channel.
      *
@@ -32,7 +32,7 @@ class InformationController extends Controller {
         }
 
         $site = Site::where('private', $request->private)->first();
-        if ( !$site) {
+        if (!$site) {
             return response()->json([
                 'status'  => 'error',
                 'message' => 'Unable to link private key to site.'
@@ -40,7 +40,7 @@ class InformationController extends Controller {
         }
 
         $channel = Channel::where('name', $request->channel)->where('site_id', $site->id)->first();
-        if ( !$channel) {
+        if (!$channel) {
             return response()->json([
                 'status'  => 'error',
                 'message' => 'Unable to find that channel name.'
@@ -79,7 +79,7 @@ class InformationController extends Controller {
         }
 
         $site = Site::where('private', $request->private)->first();
-        if ( !$site) {
+        if (!$site) {
             return response()->json([
                 'status'  => 'error',
                 'message' => 'Unable to link private key to site.'
@@ -88,4 +88,4 @@ class InformationController extends Controller {
 
         return $site->channels;
     }
-} 
+}
