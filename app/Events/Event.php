@@ -1,4 +1,6 @@
-<?php namespace Pushman\Events;
+<?php
+
+namespace Pushman\Events;
 
 abstract class Event
 {

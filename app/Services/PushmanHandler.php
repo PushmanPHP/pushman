@@ -1,9 +1,10 @@
-<?php namespace Pushman\Services;
+<?php
+
+namespace Pushman\Services;
 
 use DB;
 use Pushman\Channel;
 use Pushman\Repositories\ClientRepository;
-use Pushman\Site;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\ServerProtocol as WAMP;
 use Ratchet\Wamp\Topic;
@@ -18,6 +19,7 @@ class PushmanHandler implements WampServerInterface
 
     /**
      * Set of topics to handle.
+     *
      * @var
      */
     protected $topics = [];
@@ -45,7 +47,9 @@ class PushmanHandler implements WampServerInterface
 
     /**
      * This is called before or after a socket is closed (depends on how it's closed).  SendMessage to $conn will not result in an error if it has already been closed.
-     * @param  ConnectionInterface $conn The socket/connection that is closing/closed
+     *
+     * @param ConnectionInterface $conn The socket/connection that is closing/closed
+     *
      * @throws \Exception
      */
     public function onClose(ConnectionInterface $conn)
@@ -56,9 +60,11 @@ class PushmanHandler implements WampServerInterface
 
     /**
      * If there is an error with one of the sockets, or somewhere in the application where an Exception is thrown,
-     * the Exception is sent back down the stack, handled by the Server and bubbled back up the application through this method
-     * @param  ConnectionInterface $conn
-     * @param  \Exception          $e
+     * the Exception is sent back down the stack, handled by the Server and bubbled back up the application through this method.
+     *
+     * @param ConnectionInterface $conn
+     * @param \Exception          $e
+     *
      * @throws \Exception
      */
     public function onError(ConnectionInterface $conn, \Exception $e)
@@ -69,7 +75,8 @@ class PushmanHandler implements WampServerInterface
     }
 
     /**
-     * An RPC call has been received
+     * An RPC call has been received.
+     *
      * @param \Ratchet\ConnectionInterface $conn
      * @param string                       $id     The unique ID of the RPC, required to respond to
      * @param string|Topic                 $topic  The topic to execute the call against
@@ -83,7 +90,8 @@ class PushmanHandler implements WampServerInterface
     }
 
     /**
-     * A request to subscribe to a topic has been made
+     * A request to subscribe to a topic has been made.
+     *
      * @param \Ratchet\ConnectionInterface $conn
      * @param string|Topic                 $topic The topic to subscribe to
      */
@@ -94,7 +102,8 @@ class PushmanHandler implements WampServerInterface
     }
 
     /**
-     * A request to unsubscribe from a topic has been made
+     * A request to unsubscribe from a topic has been made.
+     *
      * @param \Ratchet\ConnectionInterface $conn
      * @param string|Topic                 $topic The topic to unsubscribe from
      */
@@ -105,7 +114,8 @@ class PushmanHandler implements WampServerInterface
     }
 
     /**
-     * A client is attempting to publish content to a subscribed connections on a URI
+     * A client is attempting to publish content to a subscribed connections on a URI.
+     *
      * @param \Ratchet\ConnectionInterface $conn
      * @param string|Topic                 $topic    The topic the user has attempted to publish to
      * @param string                       $event    Payload of the publish
@@ -200,7 +210,7 @@ class PushmanHandler implements WampServerInterface
     {
         if ($event['event'] === 'pushman_internal_event_client_force_disconnect') {
             $this->clients->forceDisconnect($event['resource_id']);
-            qlog('Forced ' . $event['resource_id'] . ' to disconnect.');
+            qlog('Forced '.$event['resource_id'].' to disconnect.');
         }
 
         return true;

@@ -1,4 +1,6 @@
-<?php namespace Pushman\Exceptions;
+<?php
+
+namespace Pushman\Exceptions;
 
 use Exception;
 

@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'home' => 'Accueil',
-    'users' => 'Utilisateurs',
-    'login' => 'Connexion',
-    'account' => 'Compte',
+    'home'     => 'Accueil',
+    'users'    => 'Utilisateurs',
+    'login'    => 'Connexion',
+    'account'  => 'Compte',
     'settings' => 'Paramètres',
-    'logout' => 'Déconnexion',
-    
+    'logout'   => 'Déconnexion',
+
 ];

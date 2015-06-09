@@ -1,4 +1,6 @@
-<?php namespace Pushman;
+<?php
+
+namespace Pushman;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Controllers\API;
+<?php
+
+namespace Pushman\Http\Controllers\API;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ class InformationController extends Controller
      * returns information on a single channel.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return mixed
      */
     public function channel(Request $request)
@@ -27,7 +30,7 @@ class InformationController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error', 'message' => 'Unable to validate input.',
-                'messages' => $validator->messages()
+                'messages' => $validator->messages(),
             ]);
         }
 
@@ -35,7 +38,7 @@ class InformationController extends Controller
         if (!$site) {
             return response()->json([
                 'status'  => 'error',
-                'message' => 'Unable to link private key to site.'
+                'message' => 'Unable to link private key to site.',
             ]);
         }
 
@@ -43,7 +46,7 @@ class InformationController extends Controller
         if (!$channel) {
             return response()->json([
                 'status'  => 'error',
-                'message' => 'Unable to find that channel name.'
+                'message' => 'Unable to find that channel name.',
             ]);
         }
 
@@ -61,20 +64,21 @@ class InformationController extends Controller
      * Returns a full list of channels associated with a site.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function channels(Request $request)
     {
         $validator = Validator::make($request->all(),
             [
-                'private' => 'required|size:60'
+                'private' => 'required|size:60',
             ]
         );
 
         if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error', 'message' => 'Unable to validate input.',
-                'messages' => $validator->messages()
+                'messages' => $validator->messages(),
             ]);
         }
 
@@ -82,7 +86,7 @@ class InformationController extends Controller
         if (!$site) {
             return response()->json([
                 'status'  => 'error',
-                'message' => 'Unable to link private key to site.'
+                'message' => 'Unable to link private key to site.',
             ]);
         }
 

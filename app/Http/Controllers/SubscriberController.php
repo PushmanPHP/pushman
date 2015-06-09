@@ -1,15 +1,15 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
+
+namespace Pushman\Http\Controllers;
 
 use Pushman\Ban;
-use Pushman\Channel;
 use Pushman\Client;
-use Pushman\Http\Requests;
 use Pushman\Site;
 
 class SubscriberController extends Controller
 {
     /**
-     * Build middleware
+     * Build middleware.
      */
     public function __construct()
     {
@@ -17,9 +17,10 @@ class SubscriberController extends Controller
     }
 
     /**
-     * Shows a sites subscribers
+     * Shows a sites subscribers.
      *
      * @param \Pushman\Site $site
+     *
      * @return \Illuminate\View\View
      */
     public function show(Site $site)
@@ -30,27 +31,28 @@ class SubscriberController extends Controller
     }
 
     /**
-     * Force disconnects someone
+     * Force disconnects someone.
      *
      * @param \Pushman\Site $site
      * @param               $resourceID
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function disconnect(Site $site, $resourceID)
     {
         $pushmanPayload = [
             'event'       => 'pushman_internal_event_client_force_disconnect',
-            'resource_id' => $resourceID
+            'resource_id' => $resourceID,
         ];
         $pushmanPayload = json_encode($pushmanPayload);
 
         $port = env('PUSHMAN_INTERNAL', 5555);
         $context = new \ZMQContext();
         $socket = $context->getSocket(\ZMQ::SOCKET_PUSH, 'pushman');
-        $socket->connect("tcp://localhost:" . $port);
+        $socket->connect('tcp://localhost:'.$port);
         $socket->send($pushmanPayload);
 
-        flash()->warning('Forced client ' . $resourceID . ' to disconnect.');
+        flash()->warning('Forced client '.$resourceID.' to disconnect.');
 
         return redirect()->back();
     }
@@ -63,7 +65,7 @@ class SubscriberController extends Controller
 
         Ban::ban($site, $client);
 
-        flash()->error('Forced client ' . $resourceID . ' to disconnect and he was banned.');
+        flash()->error('Forced client '.$resourceID.' to disconnect and he was banned.');
 
         return redirect()->back();
     }

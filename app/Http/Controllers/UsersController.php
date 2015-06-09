@@ -1,8 +1,9 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
+
+namespace Pushman\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
 use Laracasts\Flash\FlashNotifier;
-use Pushman\Http\Requests;
 use Pushman\User;
 
 class UsersController extends Controller
@@ -41,9 +42,10 @@ class UsersController extends Controller
     }
 
     /**
-     * Show a single user
+     * Show a single user.
      *
      * @param \Pushman\User $user
+     *
      * @return \Illuminate\View\View
      */
     public function show(User $user)
@@ -55,6 +57,7 @@ class UsersController extends Controller
      * Promote a user from Waiting to Active.
      *
      * @param \Pushman\User $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function promote(User $user)
@@ -77,6 +80,7 @@ class UsersController extends Controller
      * Ban a user.
      *
      * @param \Pushman\User $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function ban(User $user)

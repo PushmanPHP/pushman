@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class UpdateMaxConnectionsRequest extends Request
 {
@@ -22,7 +24,7 @@ class UpdateMaxConnectionsRequest extends Request
         return [
             'name'  => 'required',
             'value' => 'required|integer',
-            'pk'    => 'required|integer'
+            'pk'    => 'required|integer',
         ];
     }
 }

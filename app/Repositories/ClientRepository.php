@@ -1,4 +1,6 @@
-<?php namespace Pushman\Repositories;
+<?php
+
+namespace Pushman\Repositories;
 
 use DB;
 use Illuminate\Support\Collection;
@@ -33,7 +35,7 @@ class ClientRepository
             $client = Client::create([
                 'resource_id' => $conn->resourceId,
                 'ip'          => $conn->remoteAddress,
-                'site_id'     => $public_channel->site->id
+                'site_id'     => $public_channel->site->id,
             ]);
             $client->subscriptions()->attach($public_channel->id, ['event' => 'public']);
             qlog("Client {$conn->resourceId} connected successfully.");
@@ -162,7 +164,7 @@ class ClientRepository
             $client->unsubscribe($channel, $event);
             qlog("{$resource_id} tuned out of {$channel->name} on {$site->name} for {$event}.");
 
-            return $channel->name . '(' . $channel->public . ')|' . $event;
+            return $channel->name.'('.$channel->public.')|'.$event;
         }
     }
 
@@ -179,7 +181,7 @@ class ClientRepository
             ->where('site_id', $site_id)
             ->first();
         if ($banned) {
-            throw new UserIsBannedException('This IP address has been banned for ' . $banned->duration . ' days.');
+            throw new UserIsBannedException('This IP address has been banned for '.$banned->duration.' days.');
         }
     }
 }

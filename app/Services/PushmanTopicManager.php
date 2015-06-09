@@ -1,4 +1,5 @@
 <?php
+
 namespace Pushman\Services;
 
 use Ratchet\ConnectionInterface;
@@ -28,7 +29,7 @@ class PushmanTopicManager implements WsServerInterface, WampServerInterface
      */
     public function onOpen(ConnectionInterface $conn)
     {
-        $conn->WAMP->subscriptions = new \SplObjectStorage;
+        $conn->WAMP->subscriptions = new \SplObjectStorage();
         $this->app->onOpen($conn);
     }
 
@@ -124,6 +125,7 @@ class PushmanTopicManager implements WsServerInterface, WampServerInterface
 
     /**
      * @param string
+     *
      * @return Topic
      */
     protected function getTopic($topic)

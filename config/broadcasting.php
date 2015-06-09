@@ -43,7 +43,7 @@ return [
         'pushman' => [
             'driver'  => 'pushman',
             'private' => env('PUSHMAN_PRIVATE'),
-            'url'     => env('PUSHMAN_URL')
+            'url'     => env('PUSHMAN_URL'),
         ],
 
         'redis'   => [

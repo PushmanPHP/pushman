@@ -1,9 +1,11 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
+
+namespace Pushman\Http\Controllers;
 
 class WelcomeController extends Controller
 {
     /**
-     * Setup middleware
+     * Setup middleware.
      */
     public function __construct()
     {

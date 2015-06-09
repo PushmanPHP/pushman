@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Controllers\API;
+<?php
+
+namespace Pushman\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -12,9 +14,10 @@ use Validator;
 class ChannelController extends Controller
 {
     /**
-     * Create a set of channels
+     * Create a set of channels.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Pushman\Channel|\Symfony\Component\HttpFoundation\Response
      */
     public function create(Request $request)
@@ -23,13 +26,13 @@ class ChannelController extends Controller
             [
                 'private'   => 'required|size:60',
                 'channel'   => 'required|string|min:3',
-                'refreshes' => 'in:yes,no'
+                'refreshes' => 'in:yes,no',
             ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error', 'message' => 'Unable to validate input',
-                'messages' => $validator->messages()
+                'messages' => $validator->messages(),
             ]);
         }
 
@@ -44,7 +47,7 @@ class ChannelController extends Controller
         $site = SiteRepository::find($request->private);
         if (!$site) {
             return response()->json([
-                'status' => 'error', 'message' => 'Unable to validate private key.'
+                'status' => 'error', 'message' => 'Unable to validate private key.',
             ]);
         }
 
@@ -54,7 +57,7 @@ class ChannelController extends Controller
             }
         } catch (InvalidChannelException $ex) {
             return response()->json([
-                'status' => 'error', 'message' => 'Unable to validate channel name. Possible duplicate?'
+                'status' => 'error', 'message' => 'Unable to validate channel name. Possible duplicate?',
             ]);
         }
 
@@ -65,7 +68,7 @@ class ChannelController extends Controller
 
             if (!ChannelRepository::validateMaxConnections($max)) {
                 return response()->json([
-                    'status' => 'error', 'message' => 'That is not a valid amount of max connections.'#
+                    'status' => 'error', 'message' => 'That is not a valid amount of max connections.', #
                 ]);
             }
 
@@ -76,9 +79,10 @@ class ChannelController extends Controller
     }
 
     /**
-     * Destroy a set of channels
+     * Destroy a set of channels.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function destroy(Request $request)
@@ -92,14 +96,14 @@ class ChannelController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error', 'message' => 'Unable to validate input',
-                'messages' => $validator->messages()
+                'messages' => $validator->messages(),
             ]);
         }
 
         $site = SiteRepository::find($request->private);
         if (!$site) {
             return response()->json([
-                'status' => 'error', 'message' => 'Unable to validate the private key.'
+                'status' => 'error', 'message' => 'Unable to validate the private key.',
             ]);
         }
 
@@ -130,7 +134,7 @@ class ChannelController extends Controller
             'status'    => 'success',
             'message'   => '',
             'deleted'   => implode(',', $deleted_entries),
-            'failed_on' => implode(',', $failed_entries)
+            'failed_on' => implode(',', $failed_entries),
         ]);
     }
 }

@@ -31,6 +31,7 @@ function user()
  * Detects if a string is JSON.
  *
  * @param $string
+ *
  * @return bool
  */
 function isJson($string)

@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class CreateChannelRequest extends Request
 {
@@ -22,7 +24,7 @@ class CreateChannelRequest extends Request
         return [
             'name'            => 'required|min:3',
             'refreshes'       => 'required|in:yes,no',
-            'max_connections' => 'required|integer'
+            'max_connections' => 'required|integer',
         ];
     }
 }

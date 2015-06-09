@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class SettingsRequest extends Request
 {
@@ -24,7 +26,7 @@ class SettingsRequest extends Request
     public function rules()
     {
         return [
-            'locale' => 'required|in:en,fr'
+            'locale' => 'required|in:en,fr',
         ];
     }
 }

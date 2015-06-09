@@ -1,4 +1,6 @@
-<?php namespace Pushman;
+<?php
+
+namespace Pushman;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +14,7 @@ class Ban extends Model
             'ip'       => $client->ip,
             'site_id'  => $site->id,
             'duration' => '90',
-            'active'   => 'yes'
+            'active'   => 'yes',
         ]);
     }
 }

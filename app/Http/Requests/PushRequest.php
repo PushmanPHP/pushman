@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class PushRequest extends Request
 {
@@ -23,7 +25,7 @@ class PushRequest extends Request
             'private' => 'required|size:60',
             'channel' => 'string|min:3',
             'event'   => 'required|string|min:3',
-            'payload' => 'string'
+            'payload' => 'string',
         ];
     }
 }

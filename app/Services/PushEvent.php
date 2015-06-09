@@ -1,4 +1,6 @@
-<?php namespace Pushman\Services;
+<?php
+
+namespace Pushman\Services;
 
 use Carbon\Carbon;
 use GrahamCampbell\Binput\Facades\Binput;
@@ -11,13 +13,14 @@ class PushEvent
 {
     /**
      * Handles an incoming event from any source
-     * Pushes it out to the PushmanHandler via ZeroMQ
+     * Pushes it out to the PushmanHandler via ZeroMQ.
      *
      * @param        $private
      * @param        $event
      * @param array  $channels
      * @param string $payload
      * @param bool   $logRequest
+     *
      * @return array
      */
     public function handle($private, $event, $channels = [], $payload = '', $logRequest = true)
@@ -53,7 +56,7 @@ class PushEvent
             'event'    => $event,
             'channels' => $arrChannels->toJson(),
             'payload'  => $payload,
-            'log'      => $logRequest
+            'log'      => $logRequest,
         ];
         $pushmanPayload = json_encode($pushmanPayload);
 
@@ -65,7 +68,7 @@ class PushEvent
         $port = env('PUSHMAN_INTERNAL', 5555);
         $context = new \ZMQContext();
         $socket = $context->getSocket(\ZMQ::SOCKET_PUSH, 'pushman');
-        $socket->connect("tcp://localhost:" . $port);
+        $socket->connect('tcp://localhost:'.$port);
         $socket->send($pushmanPayload);
 
         return [
@@ -75,7 +78,7 @@ class PushEvent
             'channels'  => $arrChannels,
             'site'      => $site->name,
             'timestamp' => Carbon::now(),
-            'payload'   => $payload
+            'payload'   => $payload,
         ];
     }
 
@@ -86,8 +89,10 @@ class PushEvent
      * Stops <script> tags.
      *
      * @param $payload
-     * @return mixed|string
+     *
      * @throws \Pushman\Exceptions\InvalidPayloadException
+     *
+     * @return mixed|string
      */
     private function validatePayload($payload)
     {
@@ -102,7 +107,7 @@ class PushEvent
         $payloadCharacters = str_split($payload);
         $characterArray = [];
         foreach ($payloadCharacters as $key => $character) {
-            if (mb_check_encoding($character, "UTF-8")) {
+            if (mb_check_encoding($character, 'UTF-8')) {
                 $characterArray[] = $character;
             }
         }
@@ -121,6 +126,7 @@ class PushEvent
      * Detects if a string is JSON.
      *
      * @param $string
+     *
      * @return bool
      */
     private function isJson($string)
@@ -134,11 +140,12 @@ class PushEvent
      * Literally checks for <script>.
      *
      * @param $payload
+     *
      * @return bool
      */
     private function containsScripts($payload)
     {
-        if (str_contains($payload, "<script>")) {
+        if (str_contains($payload, '<script>')) {
             return true;
         }
 

@@ -1,8 +1,9 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
+
+namespace Pushman\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Pushman\Channel;
-use Pushman\Http\Requests;
 use Pushman\Http\Requests\CreateChannelRequest;
 use Pushman\Http\Requests\UpdateMaxConnectionsRequest;
 use Pushman\Repositories\ChannelRepository;
@@ -42,10 +43,11 @@ class ChannelController extends Controller
     }
 
     /**
-     * Store the resource
+     * Store the resource.
      *
      * @param \Pushman\Http\Requests\CreateChannelRequest $request
      * @param \Pushman\Site                               $site
+     *
      * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(CreateChannelRequest $request, Site $site)
@@ -64,13 +66,14 @@ class ChannelController extends Controller
 
         flash()->success('Added the Channel.');
 
-        return redirect('/sites/' . $site->id . '/channels');
+        return redirect('/sites/'.$site->id.'/channels');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show(Site $site, Channel $channel)
@@ -81,7 +84,8 @@ class ChannelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy(Site $site, Channel $channel)
@@ -89,13 +93,14 @@ class ChannelController extends Controller
         $channel->delete();
         flash()->success('Channel deleted.');
 
-        return redirect('/sites/' . $site->id . '/channels');
+        return redirect('/sites/'.$site->id.'/channels');
     }
 
     /**
      * Validates the amount of max connections a channel is allowed.
      *
      * @param $max_connections
+     *
      * @return bool
      */
     private function validateMaxConnections($max_connections)
@@ -108,8 +113,10 @@ class ChannelController extends Controller
      *
      * @param $name
      * @param $site
-     * @return bool
+     *
      * @throws \Pushman\Exceptions\InvalidChannelException
+     *
+     * @return bool
      */
     private function validateName($name, $site)
     {
@@ -121,6 +128,7 @@ class ChannelController extends Controller
      *
      * @param \Pushman\Site    $site
      * @param \Pushman\Channel $channel
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function regenerate(Site $site, Channel $channel)
@@ -138,6 +146,7 @@ class ChannelController extends Controller
      *
      * @param \Pushman\Site    $site
      * @param \Pushman\Channel $channel
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function toggle(Site $site, Channel $channel)
@@ -161,6 +170,7 @@ class ChannelController extends Controller
      * @param \Pushman\Site                                      $site
      * @param \Pushman\Channel                                   $channel
      * @param \Pushman\Http\Requests\UpdateMaxConnectionsRequest $request
+     *
      * @return mixed
      */
     public function maxConnections(Site $site, Channel $channel, UpdateMaxConnectionsRequest $request)

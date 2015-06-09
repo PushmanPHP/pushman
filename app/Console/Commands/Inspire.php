@@ -1,4 +1,6 @@
-<?php namespace Pushman\Console\Commands;
+<?php
+
+namespace Pushman\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

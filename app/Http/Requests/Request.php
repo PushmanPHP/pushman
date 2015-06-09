@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

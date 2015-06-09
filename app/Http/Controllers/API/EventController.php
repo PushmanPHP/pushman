@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Controllers\API;
+<?php
+
+namespace Pushman\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Pushman\Exceptions\InvalidRequestException;
@@ -13,6 +15,7 @@ class EventController extends Controller
      * Handles in the incoming push request for Pushman.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function push(Request $request)
@@ -22,14 +25,14 @@ class EventController extends Controller
                 'private'  => 'required|size:60',
                 'channels' => 'string|min:3',
                 'event'    => 'required|string|min:3',
-                'payload'  => 'string'
+                'payload'  => 'string',
             ]
         );
 
         if ($validator->fails()) {
             return response()->json([
                 'status'   => 'error', 'message' => 'Unable to validate input.',
-                'messages' => $validator->messages()
+                'messages' => $validator->messages(),
             ]);
         }
 
@@ -38,7 +41,7 @@ class EventController extends Controller
         } catch (InvalidRequestException $ex) {
             return response()->json([
                 'status'   => 'error', 'message' => 'Unable to parse channels.',
-                'messages' => $ex->getMessage()
+                'messages' => $ex->getMessage(),
             ]);
         }
 
@@ -57,6 +60,7 @@ class EventController extends Controller
      * Decodes a JSON array of channels.
      *
      * @param $channels
+     *
      * @return array|mixed
      */
     private function getChannels($channels)

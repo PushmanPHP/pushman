@@ -1,4 +1,6 @@
-<?php namespace Pushman\Repositories;
+<?php
+
+namespace Pushman\Repositories;
 
 use Pushman\Channel;
 use Pushman\Exceptions\InvalidChannelException;
@@ -48,7 +50,7 @@ class ChannelRepository
 
     public static function validateMaxConnections($max_connections)
     {
-        $max_connections = (int)$max_connections;
+        $max_connections = (int) $max_connections;
 
         if (user() && user()->isAdmin()) {
             return true;

@@ -1,12 +1,13 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
 
-use Pushman\Http\Requests;
+namespace Pushman\Http\Controllers;
+
 use Pushman\Http\Requests\SettingsRequest;
 
 class SettingsController extends Controller
 {
     /**
-     * Build middleware
+     * Build middleware.
      */
     public function __construct()
     {
@@ -22,7 +23,7 @@ class SettingsController extends Controller
     {
         $locales = [
             'en' => 'English',
-            'fr' => 'French'
+            'fr' => 'French',
         ];
 
         return view('settings.index', compact('locales'));

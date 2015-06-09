@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class CreateNewUserRequest extends Request
 {
@@ -22,7 +24,7 @@ class CreateNewUserRequest extends Request
         return [
             'username' => 'required|unique:users',
             'email'    => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:8'
+            'password' => 'required|confirmed|min:8',
         ];
     }
 }

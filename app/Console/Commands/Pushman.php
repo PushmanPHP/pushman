@@ -1,4 +1,6 @@
-<?php namespace Pushman\Console\Commands;
+<?php
+
+namespace Pushman\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Bus\SelfHandling;
@@ -13,9 +15,9 @@ use React\ZMQ\Context;
 
 class Pushman extends Command implements SelfHandling
 {
-    protected $description = "Runs the Pushman server.";
+    protected $description = 'Runs the Pushman server.';
 
-    protected $name = "pushman:run";
+    protected $name = 'pushman:run';
 
     /**
      * Execute the command.
@@ -32,7 +34,7 @@ class Pushman extends Command implements SelfHandling
 
         $context = new Context($loop);
         $pull = $context->getSocket(\ZMQ::SOCKET_PULL);
-        $pull->bind('tcp://127.0.0.1:' . $port);
+        $pull->bind('tcp://127.0.0.1:'.$port);
         $pull->on('message', [$pusher, 'handleEvent']);
 
         $webSock = new Server($loop);

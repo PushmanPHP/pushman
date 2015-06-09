@@ -1,4 +1,6 @@
-<?php namespace Pushman\Providers;
+<?php
+
+namespace Pushman\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Pushman\Services\PushPrep;

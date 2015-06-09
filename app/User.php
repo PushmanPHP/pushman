@@ -1,4 +1,6 @@
-<?php namespace Pushman;
+<?php
+
+namespace Pushman;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -68,7 +70,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * Do they own a specific resource? (Site, Channel, Log, etc);
+     * Do they own a specific resource? (Site, Channel, Log, etc);.
      *
      * @return bool
      */

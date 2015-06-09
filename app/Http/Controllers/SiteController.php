@@ -1,7 +1,8 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
+
+namespace Pushman\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Pushman\Http\Requests;
 use Pushman\Http\Requests\CreateSiteRequest;
 use Pushman\Repositories\SiteRepository;
 use Pushman\Site;
@@ -9,7 +10,7 @@ use Pushman\Site;
 class SiteController extends Controller
 {
     /**
-     * Start middleware
+     * Start middleware.
      */
     public function __construct()
     {
@@ -42,7 +43,8 @@ class SiteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show(Site $site)
@@ -53,7 +55,8 @@ class SiteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy(Site $site)
@@ -70,6 +73,7 @@ class SiteController extends Controller
      * Regenerate the site token.
      *
      * @param \Pushman\Site $site
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function regenerate(Site $site)

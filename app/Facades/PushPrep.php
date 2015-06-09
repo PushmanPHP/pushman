@@ -1,4 +1,6 @@
-<?php namespace Pushman\Facades;
+<?php
+
+namespace Pushman\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -202,7 +202,7 @@ return [
         'Form'      => 'Illuminate\Html\FormFacade',
         'HTML'      => 'Illuminate\Html\HtmlFacade',
         'PushPrep'  => 'Pushman\Facades\PushPrep',
-        'Binput'    => 'GrahamCampbell\Binput\Facades\Binput'
+        'Binput'    => 'GrahamCampbell\Binput\Facades\Binput',
     ],
 
 ];

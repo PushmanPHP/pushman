@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Controllers;
+<?php
+
+namespace Pushman\Http\Controllers;
 
 use Pushman\Ban;
 use Pushman\Http\Requests\EditBanRequest;

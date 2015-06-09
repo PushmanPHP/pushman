@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class CreateSiteRequest extends Request
 {
@@ -21,7 +23,7 @@ class CreateSiteRequest extends Request
     {
         return [
             'name' => 'required|min:3',
-            'url'  => 'required|url'
+            'url'  => 'required|url',
         ];
     }
 }

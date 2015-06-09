@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class EditBanRequest extends Request
 {
@@ -23,7 +25,7 @@ class EditBanRequest extends Request
             'id'       => 'required|exists:bans',
             'ip'       => 'required',
             'duration' => 'required',
-            'active'   => 'required|in:yes,no'
+            'active'   => 'required|in:yes,no',
         ];
     }
 }

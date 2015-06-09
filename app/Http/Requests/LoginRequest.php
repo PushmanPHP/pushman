@@ -1,4 +1,6 @@
-<?php namespace Pushman\Http\Requests;
+<?php
+
+namespace Pushman\Http\Requests;
 
 class LoginRequest extends Request
 {
@@ -21,7 +23,7 @@ class LoginRequest extends Request
     {
         return [
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ];
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace Pushman\Services;
+<?php
+
+namespace Pushman\Services;
 
 use Ratchet\ConnectionInterface;
 
