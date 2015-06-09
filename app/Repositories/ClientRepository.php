@@ -51,7 +51,7 @@ class ClientRepository
                 'resource_id' => $conn->resourceId,
                 'ip'          => $conn->remoteAddress,
                 'site_id'     => $public_channel->site->id,
-                'userdata'    => $userdata
+                'userdata'    => $userdata,
             ]);
             $client->subscriptions()->attach($public_channel->id, ['event' => 'public']);
             qlog("Client {$conn->resourceId} connected successfully.");
@@ -88,8 +88,10 @@ class ClientRepository
      * Validate a clients token.
      *
      * @param $token
-     * @return mixed
+     *
      * @throws InvalidTokenException
+     *
+     * @return mixed
      */
     private function validateToken($token)
     {
@@ -133,6 +135,7 @@ class ClientRepository
      * Seperate a private channel from its token and format.
      *
      * @param $topic
+     *
      * @return array
      */
     private function seperatePrivateChannel($topic)
@@ -149,6 +152,7 @@ class ClientRepository
      * @param ConnectionInterface $conn
      * @param                     $channel
      * @param                     $key
+     *
      * @return array|bool
      */
     private function validatePrivateToken(ConnectionInterface $conn, $channel, $key)
@@ -182,6 +186,7 @@ class ClientRepository
      *
      * @param Channel             $channel
      * @param ConnectionInterface $conn
+     *
      * @return bool
      */
     private function validateMaxConnections(Channel $channel, ConnectionInterface $conn)
@@ -204,6 +209,7 @@ class ClientRepository
      *
      * @param ConnectionInterface $conn
      * @param                     $topic
+     *
      * @return string
      */
     public function unsubscribe(ConnectionInterface $conn, $topic)
@@ -223,7 +229,7 @@ class ClientRepository
             $client->unsubscribe($channel, $event);
             qlog("{$resource_id} tuned out of {$channel->name} on {$site->name} for {$event}.");
 
-            return $channel->name . '(' . $channel->public . ')|' . $event;
+            return $channel->name.'('.$channel->public.')|'.$event;
         }
     }
 
@@ -243,13 +249,14 @@ class ClientRepository
      *
      * @param $conn
      * @param $site_id
+     *
      * @throws UserIsBannedException
      */
     private function isUserBanned($conn, $site_id)
     {
         $banned = Ban::where('ip', $conn->remoteAddress)->where('active', 'yes')->where('site_id', $site_id)->first();
         if ($banned) {
-            throw new UserIsBannedException('This IP address has been banned for ' . $banned->duration . ' days.');
+            throw new UserIsBannedException('This IP address has been banned for '.$banned->duration.' days.');
         }
     }
 }

@@ -94,6 +94,7 @@ class InformationController extends Controller
      * Handles the returning of Subscribers to a single channel and their events.
      *
      * @param Request $request
+     *
      * @return Collection|\Symfony\Component\HttpFoundation\Response
      */
     public function subscribers(Request $request)
@@ -107,7 +108,7 @@ class InformationController extends Controller
             return response()->json([
                 'status'   => 'error',
                 'message'  => 'Unable to validate input.',
-                'messages' => $validator->messages()
+                'messages' => $validator->messages(),
             ]);
         }
 
@@ -130,8 +131,10 @@ class InformationController extends Controller
      * Grabs a site if possible.
      *
      * @param $private
-     * @return mixed
+     *
      * @throws InvalidSiteException
+     *
+     * @return mixed
      */
     private function getSite($private)
     {
@@ -148,8 +151,10 @@ class InformationController extends Controller
      *
      * @param      $channel
      * @param Site $site
-     * @return mixed
+     *
      * @throws InvalidChannelException
+     *
+     * @return mixed
      */
     private function getChannel($channel, Site $site)
     {
@@ -165,6 +170,7 @@ class InformationController extends Controller
      * Parses the subscribers into a nice JSON formatable object.
      *
      * @param $subscribers
+     *
      * @return Collection
      */
     private function parseSubcribers($subscribers)
@@ -191,6 +197,7 @@ class InformationController extends Controller
      * Strips data that isn't even going to be relevant.
      *
      * @param $subscriber
+     *
      * @return mixed
      */
     private function unsetUnwantedVariables($subscriber)
@@ -208,6 +215,7 @@ class InformationController extends Controller
      *
      * @param $sub
      * @param $events
+     *
      * @return mixed
      */
     private function populateEvents($sub, $events)
