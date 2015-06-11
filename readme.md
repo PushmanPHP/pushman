@@ -8,20 +8,21 @@ You can bind server side events to client notifications.
 
 Demo on the [Pushman Website](http://pushman.dfl.mn).
 
-## Todo for Version 2.5
-* Make API endpoint for broadcasting to a specific client only.
-
 ## Todo for Version 3
 *Okay, testing is the next big thing. Thanks to laravel 5.1, I'll write up tests in PHPUnit!*
 
-* Write tests for PHPLib and Pushman :) Integrate with travis-ci
-* Build Pushman Lite as an independant Package to include in sites.
-* Way better documentation for building Pushman.
-* Allow users to broadcast back to the server.
+* Rewrite PushmanHandler -> Use Non-queued job instead of a class
+* General code cleanup (lots of mess around)
+* Make API endpoint for broadcasting to a specific client only.
+* Write for Pushman :) Integrate with travis-ci
+* Way better documentation for building your own Pushman.
+* Implement Swagger.io? Easy clean docs for the API.
+* Allow users to broadcast back to the server?
 
 ### Long term todo list
 * Shad is working on a cool new User Interface
-* Push console logs out on PushmanInternal Channel. // later
+* Build Pushman Lite as an independant Package to include in single sites.
+* Push console logs out on PushmanInternal Channel.
 
 ## Official Documentation
 Documentation for usage can be found on the [Pushman website](http://pushman.dfl.mn/documentation).

@@ -2,11 +2,12 @@
 
 namespace Pushman\Providers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
-use Pushman\Services\PushPrep;
 
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Bootstrap any application services.
      *
@@ -14,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('json', function ($attribute, $value, $paramters) {
+            json_decode($value);
+            if (json_last_error()) {
+                return false;
+            }
+
+            return true;
+        });
     }
 
     /**

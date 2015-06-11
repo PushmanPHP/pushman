@@ -11,6 +11,7 @@ use Validator;
 
 class EventController extends Controller
 {
+
     /**
      * Handles in the incoming push request for Pushman.
      *
@@ -20,18 +21,17 @@ class EventController extends Controller
      */
     public function push(Request $request)
     {
-        $validator = Validator::make($request->all(),
-            [
-                'private'  => 'required|size:60',
-                'channels' => 'string|min:3',
-                'event'    => 'required|string|min:3',
-                'payload'  => 'string',
-            ]
-        );
+        $validator = Validator::make($request->all(), [
+            'private'  => 'required|size:60',
+            'channels' => 'string|min:3',
+            'event'    => 'required|string|min:3',
+            'payload'  => 'string',
+        ]);
 
         if ($validator->fails()) {
             return response()->json([
-                'status'   => 'error', 'message' => 'Unable to validate input.',
+                'status'   => 'error',
+                'message'  => 'Unable to validate input.',
                 'messages' => $validator->messages(),
             ]);
         }
@@ -40,7 +40,8 @@ class EventController extends Controller
             $channels = $this->getChannels($request->channels);
         } catch (InvalidRequestException $ex) {
             return response()->json([
-                'status'   => 'error', 'message' => 'Unable to parse channels.',
+                'status'   => 'error',
+                'message'  => 'Unable to parse channels.',
                 'messages' => $ex->getMessage(),
             ]);
         }

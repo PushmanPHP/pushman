@@ -17,7 +17,7 @@ class Pushman extends Command implements SelfHandling
 {
     protected $description = 'Runs the Pushman server.';
 
-    protected $name = 'pushman:run';
+    protected $signature = 'pushman:run';
 
     /**
      * Execute the command.

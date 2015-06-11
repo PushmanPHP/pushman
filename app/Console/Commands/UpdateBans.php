@@ -10,7 +10,7 @@ class UpdateBans extends Command implements SelfHandling
 {
     protected $description = 'Checks bans to see if they have passed their duration and deactivates them.';
 
-    protected $name = 'pushman:bans';
+    protected $signature = 'pushman:bans';
 
     /**
      * Execute the command.

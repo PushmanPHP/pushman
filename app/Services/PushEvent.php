@@ -11,6 +11,7 @@ use Pushman\Site;
 
 class PushEvent
 {
+
     /**
      * Handles an incoming event from any source
      * Pushes it out to the PushmanHandler via ZeroMQ.
@@ -68,7 +69,7 @@ class PushEvent
         $port = env('PUSHMAN_INTERNAL', 5555);
         $context = new \ZMQContext();
         $socket = $context->getSocket(\ZMQ::SOCKET_PUSH, 'pushman');
-        $socket->connect('tcp://localhost:'.$port);
+        $socket->connect('tcp://localhost:' . $port);
         $socket->send($pushmanPayload);
 
         return [
