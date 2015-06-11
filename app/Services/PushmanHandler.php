@@ -135,7 +135,7 @@ class PushmanHandler implements WampServerInterface
     public function handleEvent($event)
     {
         $event = json_decode($event, true);
-
+        
         if ($this->isInternalEvent($event)) {
             $this->handleInternal($event);
 
@@ -177,9 +177,8 @@ class PushmanHandler implements WampServerInterface
     private function getChannels($channels)
     {
         $array = [];
-        $channels = json_decode($channels, true);
         foreach ($channels as $channel) {
-            $array[] = Channel::find($channel['id']);
+            $array[] = Channel::find($channel);
         }
 
         return $array;
