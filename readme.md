@@ -11,12 +11,12 @@ Demo on the [Pushman Website](http://pushman.dfl.mn).
 ## Todo for Version 3
 *Okay, testing is the next big thing. Thanks to laravel 5.1, I'll write up tests in PHPUnit!*
 
-* Rewrite PushmanHandler -> Use Non-queued job instead of a class
-* General code cleanup (lots of mess around)
+* ~~Rewrite PushmanHandler -> Use Non-queued job instead of a class~~
+* ~~General code cleanup (lots of mess around)~~
 * Make API endpoint for broadcasting to a specific client only.
 * Write for Pushman :) Integrate with travis-ci
 * Way better documentation for building your own Pushman.
-* Implement Swagger.io? Easy clean docs for the API.
+    * Implement Swagger.io? Easy clean docs for the API.
 * Allow users to broadcast back to the server?
 
 ### Long term todo list
