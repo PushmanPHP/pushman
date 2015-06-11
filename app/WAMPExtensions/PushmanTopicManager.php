@@ -1,7 +1,8 @@
 <?php
 
-namespace Pushman\Services;
+namespace Pushman\WAMPExtensions;
 
+use Pushman\Services\TopicHandler;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\Topic;
 use Ratchet\Wamp\WampServerInterface;

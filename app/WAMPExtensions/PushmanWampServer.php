@@ -1,6 +1,6 @@
 <?php
 
-namespace Pushman\Services;
+namespace Pushman\WAMPExtensions;
 
 use Exception;
 use Ratchet\ConnectionInterface;

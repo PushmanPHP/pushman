@@ -7,13 +7,13 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
     /**
      * The Artisan commands provided by your application.
      *
      * @var array
      */
     protected $commands = [
-        'Pushman\Console\Commands\Inspire',
         'Pushman\Console\Commands\Pushman',
         'Pushman\Console\Commands\RefreshTokens',
         'Pushman\Console\Commands\UpdateBans',
@@ -28,13 +28,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-            ->hourly();
+        $schedule->command('pushman:refresh')->hourly();
 
-        $schedule->command('pushman:refresh')
-            ->hourly();
-
-        $schedule->command('pushman:bans')
-            ->daily();
+        $schedule->command('pushman:bans')->daily();
     }
 }

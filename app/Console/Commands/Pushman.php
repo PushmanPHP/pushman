@@ -5,7 +5,7 @@ namespace Pushman\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Pushman\Services\PushmanHandler;
-use Pushman\Services\PushmanWampServer;
+use Pushman\WAMPExtensions\PushmanWampServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;

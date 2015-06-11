@@ -14,7 +14,6 @@ return [
     */
 
     'debug'           => env('APP_DEBUG', false),
-
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -27,7 +26,6 @@ return [
     */
 
     'url'             => 'http://localhost',
-
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -40,7 +38,6 @@ return [
     */
 
     'timezone'        => 'UTC',
-
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -53,7 +50,6 @@ return [
     */
 
     'locale'          => 'en',
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -66,7 +62,6 @@ return [
     */
 
     'fallback_locale' => 'en',
-
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -79,9 +74,7 @@ return [
     */
 
     'key'             => env('APP_KEY', 'SomeRandomString'),
-
     'cipher'          => MCRYPT_RIJNDAEL_128,
-
     /*
     |--------------------------------------------------------------------------
     | Logging Configuration
@@ -96,7 +89,6 @@ return [
     */
 
     'log'             => 'daily',
-
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -136,13 +128,11 @@ return [
         'Illuminate\Translation\TranslationServiceProvider',
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
-
         'Illuminate\Html\HtmlServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'GrahamCampbell\Security\SecurityServiceProvider',
         'GrahamCampbell\Binput\BinputServiceProvider',
-
         /*
          * Application Service Providers...
          */
@@ -153,7 +143,6 @@ return [
         'Pushman\Providers\RouteServiceProvider',
 
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -201,7 +190,6 @@ return [
         'View'      => 'Illuminate\Support\Facades\View',
         'Form'      => 'Illuminate\Html\FormFacade',
         'HTML'      => 'Illuminate\Html\HtmlFacade',
-        'PushPrep'  => 'Pushman\Facades\PushPrep',
         'Binput'    => 'GrahamCampbell\Binput\Facades\Binput',
     ],
 

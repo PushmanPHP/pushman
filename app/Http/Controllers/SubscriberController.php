@@ -59,11 +59,11 @@ class SubscriberController extends Controller
 
     public function ban(Site $site, $resourceID)
     {
-        $this->disconnect($site, $resourceID);
-
         $client = Client::where('resource_id', $resourceID)->first();
 
         Ban::ban($site, $client);
+
+        $this->disconnect($site, $resourceID);
 
         flash()->error('Forced client '.$resourceID.' to disconnect and he was banned.');
 
