@@ -12,7 +12,6 @@ use Ratchet\Wamp\WampServerInterface;
 
 class PushmanHandler implements WampServerInterface
 {
-
     /**
      * @var \Pushman\Repositories\ClientRepository
      */
@@ -135,7 +134,7 @@ class PushmanHandler implements WampServerInterface
     public function handleEvent($event)
     {
         $event = json_decode($event, true);
-        
+
         if ($this->isInternalEvent($event)) {
             $this->handleInternal($event);
 
@@ -210,7 +209,7 @@ class PushmanHandler implements WampServerInterface
     {
         if ($event['event'] === 'pushman_internal_event_client_force_disconnect') {
             $this->clients->forceDisconnect($event['resource_id']);
-            qlog('Forced ' . $event['resource_id'] . ' to disconnect.');
+            qlog('Forced '.$event['resource_id'].' to disconnect.');
         }
 
         return true;

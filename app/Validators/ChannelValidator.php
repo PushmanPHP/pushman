@@ -1,6 +1,7 @@
-<?php namespace Pushman\Validators;
+<?php
 
-use Illuminate\Support\Collection;
+namespace Pushman\Validators;
+
 use Pushman\Channel;
 use Pushman\Exceptions\InvalidChannelException;
 use Pushman\Interfaces\EventObject;
@@ -8,7 +9,6 @@ use Pushman\Interfaces\Validator;
 
 class ChannelValidator implements Validator
 {
-
     protected $event;
 
     /**

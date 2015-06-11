@@ -5,13 +5,11 @@ namespace Pushman\Http\Controllers\API;
 use Exception;
 use Illuminate\Http\Request;
 use Pushman\Http\Controllers\Controller;
-use Pushman\Site;
 use Pushman\ValueObjects\Event;
 use Validator;
 
 class EventController extends Controller
 {
-
     /**
      * Handles in the incoming push request for Pushman.
      *
@@ -44,14 +42,14 @@ class EventController extends Controller
         } catch (Exception $exc) {
             return response()->json([
                 'status'  => 'error',
-                'message' => $exc->getMessage()
+                'message' => $exc->getMessage(),
             ]);
         }
 
         return response()->json([
             'status'  => 'success',
             'message' => 'Event pushed successfully',
-            'event'   => $event_vo->present()
+            'event'   => $event_vo->present(),
         ]);
     }
 }

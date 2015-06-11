@@ -1,4 +1,6 @@
-<?php namespace Pushman\Interfaces;
+<?php
+
+namespace Pushman\Interfaces;
 
 interface Validator
 {

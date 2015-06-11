@@ -1,4 +1,6 @@
-<?php namespace Pushman\Validators;
+<?php
+
+namespace Pushman\Validators;
 
 use Pushman\Exceptions\InvalidSiteException;
 use Pushman\Interfaces\EventObject;
@@ -7,7 +9,6 @@ use Pushman\Site;
 
 class SiteValidator implements Validator
 {
-
     protected $event;
 
     public function __construct(EventObject $event)

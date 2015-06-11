@@ -1,10 +1,11 @@
-<?php namespace Pushman\Interfaces;
+<?php
+
+namespace Pushman\Interfaces;
 
 use Pushman\Site;
 
 interface EventObject
 {
-
     /**
      * Return the name of the event.
      *
@@ -37,6 +38,7 @@ interface EventObject
      * Set the name of the event.
      *
      * @param $name
+     *
      * @return mixed
      */
     public function setName($name);
@@ -45,6 +47,7 @@ interface EventObject
      * Set an array of channels the event will broadcast to.
      *
      * @param array $channels
+     *
      * @return mixed
      */
     public function setChannels($channels = []);
@@ -53,6 +56,7 @@ interface EventObject
      * Set the payload JSON string.
      *
      * @param $payload
+     *
      * @return mixed
      */
     public function setPayload($payload);
@@ -68,6 +72,7 @@ interface EventObject
      * Sets the site this event lives on.
      *
      * @param Site $site
+     *
      * @return mixed
      */
     public function setSite(Site $site);

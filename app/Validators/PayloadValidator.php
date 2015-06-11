@@ -1,4 +1,6 @@
-<?php namespace Pushman\Validators;
+<?php
+
+namespace Pushman\Validators;
 
 use Binput;
 use Pushman\Exceptions\InvalidPayloadException;
@@ -7,7 +9,6 @@ use Pushman\Interfaces\Validator;
 
 class PayloadValidator implements Validator
 {
-
     protected $event;
 
     public function __construct(EventObject $event)
@@ -19,8 +20,10 @@ class PayloadValidator implements Validator
      * Handles the validation.
      *
      * @param $payload
-     * @return mixed|string
+     *
      * @throws InvalidPayloadException
+     *
+     * @return mixed|string
      */
     public function validate()
     {
@@ -67,4 +70,4 @@ class PayloadValidator implements Validator
 
         return false;
     }
-} 
+}

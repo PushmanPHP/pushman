@@ -1,11 +1,12 @@
-<?php namespace Pushman\Validators;
+<?php
+
+namespace Pushman\Validators;
 
 use Pushman\Interfaces\EventObject;
 use Pushman\Interfaces\Validator;
 
 class LogValidator implements Validator
 {
-
     /**
      * @var EventObject
      */

@@ -7,7 +7,6 @@ use Pushman\Interfaces\EventObject;
 
 class PushEvent extends Job implements SelfHandling
 {
-
     /**
      * @var EventObject
      */
@@ -35,7 +34,7 @@ class PushEvent extends Job implements SelfHandling
         $port = env('PUSHMAN_INTERNAL', 5555);
         $context = new \ZMQContext();
         $socket = $context->getSocket(\ZMQ::SOCKET_PUSH, 'pushman');
-        $socket->connect('tcp://localhost:' . $port);
+        $socket->connect('tcp://localhost:'.$port);
         $socket->send($data);
     }
 }

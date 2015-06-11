@@ -1,4 +1,6 @@
-<?php namespace Pushman\ValueObjects;
+<?php
+
+namespace Pushman\ValueObjects;
 
 use Carbon\Carbon;
 use Exception;
@@ -10,7 +12,6 @@ use Pushman\Site;
 
 class Event implements EventObject
 {
-
     /**
      * @var
      */
@@ -121,6 +122,7 @@ class Event implements EventObject
      * Set the name of the event.
      *
      * @param $name
+     *
      * @return mixed
      */
     public function setName($name)
@@ -132,6 +134,7 @@ class Event implements EventObject
      * Set an array of channels the event will broadcast to.
      *
      * @param array $channels
+     *
      * @return mixed
      */
     public function setChannels($channels = ['public'])
@@ -143,6 +146,7 @@ class Event implements EventObject
      * Set the payload JSON string.
      *
      * @param $payload
+     *
      * @return mixed
      */
     public function setPayload($payload)
@@ -198,6 +202,7 @@ class Event implements EventObject
      * Sets the site this event lives on.
      *
      * @param Site $site
+     *
      * @return mixed
      */
     public function setSite(Site $site)
@@ -214,7 +219,7 @@ class Event implements EventObject
     {
         return [
             'event'     => $this->getName(),
-            'channels'  => (array)$this->getChannels(),
+            'channels'  => (array) $this->getChannels(),
             'site'      => $this->getSite()->name,
             'timestamp' => Carbon::now(),
             'payload'   => json_decode($this->getPayload(), true),
@@ -237,7 +242,7 @@ class Event implements EventObject
         return json_encode([
             'event'    => $this->getName(),
             'payload'  => json_decode($this->getPayload(), true),
-            'channels' => $channel_ids
+            'channels' => $channel_ids,
         ]);
     }
 }
