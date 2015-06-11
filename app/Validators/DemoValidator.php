@@ -5,11 +5,17 @@ use Pushman\Interfaces\EventObject;
 use Pushman\Interfaces\Validator;
 use Pushman\Site;
 
-class SiteValidator implements Validator
+class DemoValidator implements Validator
 {
 
-    protected $event;
+    /**
+     * @var EventObject
+     */
+    private $event;
 
+    /**
+     * @param EventObject $event
+     */
     public function __construct(EventObject $event)
     {
         $this->event = $event;
@@ -17,11 +23,10 @@ class SiteValidator implements Validator
 
     public function validate()
     {
-        $site = $this->event->getSite();
-        if (is_null($site)) {
-            $private = $this->event->getPrivateKey();
+        $demo_key = 'this_is_a_60_char_string_that_looks_like_a_valid_private_key';
+        if ($this->event->getPrivateKey() == $demo_key) {
+            $site = Site::where('name', 'demo')->where('url', 'http://pushman.dfl.mn')->first();
 
-            $site = Site::where('private', $private)->first();
             if (!$site) {
                 throw new InvalidSiteException('This site does not exist.');
             }

@@ -34,10 +34,12 @@ class Event implements EventObject
 
     /**
      * The validators to compare this against.
+     * These are in a specific order!
      *
      * @var array
      */
     private $validators = [
+        \Pushman\Validators\DemoValidator::class,
         \Pushman\Validators\SiteValidator::class,
         \Pushman\Validators\ChannelValidator::class,
         \Pushman\Validators\PayloadValidator::class,
